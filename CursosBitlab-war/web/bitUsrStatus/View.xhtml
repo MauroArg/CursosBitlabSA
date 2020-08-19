@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="BitUsrStatusViewDlg" widgetVar="BitUsrStatusViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewBitUsrStatusTitle}">
+            <h:form id="BitUsrStatusViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{bitUsrStatusController.selected != null}">
+                        <h:outputText value="#{bundle.ViewBitUsrStatusLabel_ussId}"/>
+                        <h:outputText value="#{bitUsrStatusController.selected.ussId}" title="#{bundle.ViewBitUsrStatusTitle_ussId}"/>
+                        <h:outputText value="#{bundle.ViewBitUsrStatusLabel_ussStatusName}"/>
+                        <h:outputText value="#{bitUsrStatusController.selected.ussStatusName}" title="#{bundle.ViewBitUsrStatusTitle_ussStatusName}"/>
+                        <h:outputText value="#{bundle.ViewBitUsrStatusLabel_ADateCreate}"/>
+                        <h:outputText value="#{bitUsrStatusController.selected.ADateCreate}" title="#{bundle.ViewBitUsrStatusTitle_ADateCreate}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewBitUsrStatusLabel_AUserCreate}"/>
+                        <h:outputText value="#{bitUsrStatusController.selected.AUserCreate}" title="#{bundle.ViewBitUsrStatusTitle_AUserCreate}"/>
+                        <h:outputText value="#{bundle.ViewBitUsrStatusLabel_ADateChange}"/>
+                        <h:outputText value="#{bitUsrStatusController.selected.ADateChange}" title="#{bundle.ViewBitUsrStatusTitle_ADateChange}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewBitUsrStatusLabel_AUserChange}"/>
+                        <h:outputText value="#{bitUsrStatusController.selected.AUserChange}" title="#{bundle.ViewBitUsrStatusTitle_AUserChange}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="BitUsrStatusViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

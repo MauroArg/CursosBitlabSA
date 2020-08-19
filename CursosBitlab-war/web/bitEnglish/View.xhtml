@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="BitEnglishViewDlg" widgetVar="BitEnglishViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewBitEnglishTitle}">
+            <h:form id="BitEnglishViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{bitEnglishController.selected != null}">
+                        <h:outputText value="#{bundle.ViewBitEnglishLabel_engId}"/>
+                        <h:outputText value="#{bitEnglishController.selected.engId}" title="#{bundle.ViewBitEnglishTitle_engId}"/>
+                        <h:outputText value="#{bundle.ViewBitEnglishLabel_engLevelName}"/>
+                        <h:outputText value="#{bitEnglishController.selected.engLevelName}" title="#{bundle.ViewBitEnglishTitle_engLevelName}"/>
+                        <h:outputText value="#{bundle.ViewBitEnglishLabel_ADateCreate}"/>
+                        <h:outputText value="#{bitEnglishController.selected.ADateCreate}" title="#{bundle.ViewBitEnglishTitle_ADateCreate}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewBitEnglishLabel_AUserCreate}"/>
+                        <h:outputText value="#{bitEnglishController.selected.AUserCreate}" title="#{bundle.ViewBitEnglishTitle_AUserCreate}"/>
+                        <h:outputText value="#{bundle.ViewBitEnglishLabel_ADateChange}"/>
+                        <h:outputText value="#{bitEnglishController.selected.ADateChange}" title="#{bundle.ViewBitEnglishTitle_ADateChange}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewBitEnglishLabel_AUserChange}"/>
+                        <h:outputText value="#{bitEnglishController.selected.AUserChange}" title="#{bundle.ViewBitEnglishTitle_AUserChange}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="BitEnglishViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

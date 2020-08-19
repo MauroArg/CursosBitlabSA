@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="BitCouStatusEditDlg" widgetVar="BitCouStatusEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditBitCouStatusTitle}">
+            <h:form id="BitCouStatusEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{bitCouStatusController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditBitCouStatusLabel_cosId}" for="cosId" />
+                        <p:inputText id="cosId" value="#{bitCouStatusController.selected.cosId}" title="#{bundle.EditBitCouStatusTitle_cosId}" required="true" requiredMessage="#{bundle.EditBitCouStatusRequiredMessage_cosId}"/>
+                        <p:outputLabel value="#{bundle.EditBitCouStatusLabel_cosStatusName}" for="cosStatusName" />
+                        <p:inputText id="cosStatusName" value="#{bitCouStatusController.selected.cosStatusName}" title="#{bundle.EditBitCouStatusTitle_cosStatusName}" required="true" requiredMessage="#{bundle.EditBitCouStatusRequiredMessage_cosStatusName}"/>
+                        <p:outputLabel value="#{bundle.EditBitCouStatusLabel_ADateCreate}" for="ADateCreate" />
+                        <p:calendar id="ADateCreate" pattern="MM/dd/yyyy HH:mm:ss" value="#{bitCouStatusController.selected.ADateCreate}" title="#{bundle.EditBitCouStatusTitle_ADateCreate}" required="true" requiredMessage="#{bundle.EditBitCouStatusRequiredMessage_ADateCreate}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditBitCouStatusLabel_AUserCreate}" for="AUserCreate" />
+                        <p:inputText id="AUserCreate" value="#{bitCouStatusController.selected.AUserCreate}" title="#{bundle.EditBitCouStatusTitle_AUserCreate}" required="true" requiredMessage="#{bundle.EditBitCouStatusRequiredMessage_AUserCreate}"/>
+                        <p:outputLabel value="#{bundle.EditBitCouStatusLabel_ADateChange}" for="ADateChange" />
+                        <p:calendar id="ADateChange" pattern="MM/dd/yyyy" value="#{bitCouStatusController.selected.ADateChange}" title="#{bundle.EditBitCouStatusTitle_ADateChange}" required="true" requiredMessage="#{bundle.EditBitCouStatusRequiredMessage_ADateChange}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditBitCouStatusLabel_AUserChange}" for="AUserChange" />
+                        <p:inputText id="AUserChange" value="#{bitCouStatusController.selected.AUserChange}" title="#{bundle.EditBitCouStatusTitle_AUserChange}" required="true" requiredMessage="#{bundle.EditBitCouStatusRequiredMessage_AUserChange}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{bitCouStatusController.update}" value="#{bundle.Save}" update="display,:BitCouStatusListForm:datalist,:growl" oncomplete="handleSubmit(args, 'BitCouStatusEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="BitCouStatusEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
