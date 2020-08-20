@@ -17,11 +17,11 @@
                         <p:outputLabel value="#{bundle.CreateBitCouStatusLabel_cosStatusName}" for="cosStatusName" />
                         <p:inputText id="cosStatusName" value="#{bitCouStatusController.selected.cosStatusName}" title="#{bundle.CreateBitCouStatusTitle_cosStatusName}" required="true" requiredMessage="#{bundle.CreateBitCouStatusRequiredMessage_cosStatusName}"/>
                         <p:outputLabel value="#{bundle.CreateBitCouStatusLabel_ADateCreate}" for="ADateCreate" />
-                        <p:calendar id="ADateCreate" pattern="MM/dd/yyyy HH:mm:ss" value="#{bitCouStatusController.selected.ADateCreate}" title="#{bundle.EditBitCouStatusTitle_ADateCreate}" required="true" requiredMessage="#{bundle.EditBitCouStatusRequiredMessage_ADateCreate}" showOn="button"/>
+                        <p:calendar id="ADateCreate" pattern="yyyy/dd/MM" value="#{bitCouStatusController.selected.ADateCreate}" title="#{bundle.EditBitCouStatusTitle_ADateCreate}" required="true" requiredMessage="#{bundle.EditBitCouStatusRequiredMessage_ADateCreate}" showOn="button"/>
                         <p:outputLabel value="#{bundle.CreateBitCouStatusLabel_AUserCreate}" for="AUserCreate" />
                         <p:inputText id="AUserCreate" value="#{bitCouStatusController.selected.AUserCreate}" title="#{bundle.CreateBitCouStatusTitle_AUserCreate}" required="true" requiredMessage="#{bundle.CreateBitCouStatusRequiredMessage_AUserCreate}"/>
                         <p:outputLabel value="#{bundle.CreateBitCouStatusLabel_ADateChange}" for="ADateChange" />
-                        <p:calendar id="ADateChange" pattern="MM/dd/yyyy" value="#{bitCouStatusController.selected.ADateChange}" title="#{bundle.EditBitCouStatusTitle_ADateChange}" required="true" requiredMessage="#{bundle.EditBitCouStatusRequiredMessage_ADateChange}" showOn="button"/>
+                        <p:calendar id="ADateChange" pattern="yyyy/dd/MM" value="#{bitCouStatusController.selected.ADateChange}" title="#{bundle.EditBitCouStatusTitle_ADateChange}" required="true" requiredMessage="#{bundle.EditBitCouStatusRequiredMessage_ADateChange}" showOn="button"/>
                         <p:outputLabel value="#{bundle.CreateBitCouStatusLabel_AUserChange}" for="AUserChange" />
                         <p:inputText id="AUserChange" value="#{bitCouStatusController.selected.AUserChange}" title="#{bundle.CreateBitCouStatusTitle_AUserChange}" required="true" requiredMessage="#{bundle.CreateBitCouStatusRequiredMessage_AUserChange}"/>
                     </p:panelGrid>
