@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="BitUserViewDlg" widgetVar="BitUserViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewBitUserTitle}">
+            <h:form id="BitUserViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{bitUserController.selected != null}">
+                        <h:outputText value="#{bundle.ViewBitUserLabel_usrId}"/>
+                        <h:outputText value="#{bitUserController.selected.usrId}" title="#{bundle.ViewBitUserTitle_usrId}"/>
+                        <h:outputText value="#{bundle.ViewBitUserLabel_usrUsername}"/>
+                        <h:outputText value="#{bitUserController.selected.usrUsername}" title="#{bundle.ViewBitUserTitle_usrUsername}"/>
+                        <h:outputText value="#{bundle.ViewBitUserLabel_usrEmail}"/>
+                        <h:outputText value="#{bitUserController.selected.usrEmail}" title="#{bundle.ViewBitUserTitle_usrEmail}"/>
+                        <h:outputText value="#{bundle.ViewBitUserLabel_usrPassword}"/>
+                        <h:outputText value="#{bitUserController.selected.usrPassword}" title="#{bundle.ViewBitUserTitle_usrPassword}"/>
+                        <h:outputText value="#{bundle.ViewBitUserLabel_ADateCreate}"/>
+                        <h:outputText value="#{bitUserController.selected.ADateCreate}" title="#{bundle.ViewBitUserTitle_ADateCreate}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewBitUserLabel_AUserCreate}"/>
+                        <h:outputText value="#{bitUserController.selected.AUserCreate}" title="#{bundle.ViewBitUserTitle_AUserCreate}"/>
+                        <h:outputText value="#{bundle.ViewBitUserLabel_ADateChange}"/>
+                        <h:outputText value="#{bitUserController.selected.ADateChange}" title="#{bundle.ViewBitUserTitle_ADateChange}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewBitUserLabel_AUserChange}"/>
+                        <h:outputText value="#{bitUserController.selected.AUserChange}" title="#{bundle.ViewBitUserTitle_AUserChange}"/>
+                        <h:outputText value="#{bundle.ViewBitUserLabel_rolId}"/>
+                        <h:outputText value="#{bitUserController.selected.rolId}" title="#{bundle.ViewBitUserTitle_rolId}"/>
+                        <h:outputText value="#{bundle.ViewBitUserLabel_ussId}"/>
+                        <h:outputText value="#{bitUserController.selected.ussId}" title="#{bundle.ViewBitUserTitle_ussId}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="BitUserViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
