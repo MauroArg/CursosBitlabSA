@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="BitCourseEditDlg" widgetVar="BitCourseEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditBitCourseTitle}">
+            <h:form id="BitCourseEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{bitCourseController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditBitCourseLabel_couId}" for="couId" />
+                        <p:inputText id="couId" value="#{bitCourseController.selected.couId}" title="#{bundle.EditBitCourseTitle_couId}" required="true" requiredMessage="#{bundle.EditBitCourseRequiredMessage_couId}"/>
+                        <p:outputLabel value="#{bundle.EditBitCourseLabel_couName}" for="couName" />
+                        <p:inputText id="couName" value="#{bitCourseController.selected.couName}" title="#{bundle.EditBitCourseTitle_couName}" required="true" requiredMessage="#{bundle.EditBitCourseRequiredMessage_couName}"/>
+                        <p:outputLabel value="#{bundle.EditBitCourseLabel_couImg}" for="couImg" />
+                        <p:inputText id="couImg" value="#{bitCourseController.selected.couImg}" title="#{bundle.EditBitCourseTitle_couImg}" required="true" requiredMessage="#{bundle.EditBitCourseRequiredMessage_couImg}"/>
+                        <p:outputLabel value="#{bundle.EditBitCourseLabel_couDescription}" for="couDescription" />
+                        <p:inputText id="couDescription" value="#{bitCourseController.selected.couDescription}" title="#{bundle.EditBitCourseTitle_couDescription}" required="true" requiredMessage="#{bundle.EditBitCourseRequiredMessage_couDescription}"/>
+                        <p:outputLabel value="#{bundle.EditBitCourseLabel_couStartDate}" for="couStartDate" />
+                        <p:calendar id="couStartDate" pattern="MM/dd/yyyy" value="#{bitCourseController.selected.couStartDate}" title="#{bundle.EditBitCourseTitle_couStartDate}" required="true" requiredMessage="#{bundle.EditBitCourseRequiredMessage_couStartDate}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditBitCourseLabel_couEndDate}" for="couEndDate" />
+                        <p:calendar id="couEndDate" pattern="MM/dd/yyyy" value="#{bitCourseController.selected.couEndDate}" title="#{bundle.EditBitCourseTitle_couEndDate}" required="true" requiredMessage="#{bundle.EditBitCourseRequiredMessage_couEndDate}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditBitCourseLabel_ADateCreate}" for="ADateCreate" />
+                        <p:calendar id="ADateCreate" pattern="MM/dd/yyyy HH:mm:ss" value="#{bitCourseController.selected.ADateCreate}" title="#{bundle.EditBitCourseTitle_ADateCreate}" required="true" requiredMessage="#{bundle.EditBitCourseRequiredMessage_ADateCreate}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditBitCourseLabel_AUserCreate}" for="AUserCreate" />
+                        <p:inputText id="AUserCreate" value="#{bitCourseController.selected.AUserCreate}" title="#{bundle.EditBitCourseTitle_AUserCreate}" required="true" requiredMessage="#{bundle.EditBitCourseRequiredMessage_AUserCreate}"/>
+                        <p:outputLabel value="#{bundle.EditBitCourseLabel_ADateChange}" for="ADateChange" />
+                        <p:calendar id="ADateChange" pattern="MM/dd/yyyy" value="#{bitCourseController.selected.ADateChange}" title="#{bundle.EditBitCourseTitle_ADateChange}" required="true" requiredMessage="#{bundle.EditBitCourseRequiredMessage_ADateChange}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditBitCourseLabel_AUserChange}" for="AUserChange" />
+                        <p:inputText id="AUserChange" value="#{bitCourseController.selected.AUserChange}" title="#{bundle.EditBitCourseTitle_AUserChange}" required="true" requiredMessage="#{bundle.EditBitCourseRequiredMessage_AUserChange}"/>
+                        <p:outputLabel value="#{bundle.EditBitCourseLabel_usrId}" for="usrId" />
+                        <p:selectOneMenu id="usrId" value="#{bitCourseController.selected.usrId}" required="true" requiredMessage="#{bundle.EditBitCourseRequiredMessage_usrId}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{bitUserController.itemsAvailableSelectOne}"
+                                           var="usrIdItem"
+                                           itemValue="#{usrIdItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditBitCourseLabel_cosId}" for="cosId" />
+                        <p:selectOneMenu id="cosId" value="#{bitCourseController.selected.cosId}" required="true" requiredMessage="#{bundle.EditBitCourseRequiredMessage_cosId}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{bitCouStatusController.itemsAvailableSelectOne}"
+                                           var="cosIdItem"
+                                           itemValue="#{cosIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{bitCourseController.update}" value="#{bundle.Save}" update="display,:BitCourseListForm:datalist,:growl" oncomplete="handleSubmit(args, 'BitCourseEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="BitCourseEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

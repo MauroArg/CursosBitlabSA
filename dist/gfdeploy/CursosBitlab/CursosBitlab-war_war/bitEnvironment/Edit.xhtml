@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="BitEnvironmentEditDlg" widgetVar="BitEnvironmentEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditBitEnvironmentTitle}">
+            <h:form id="BitEnvironmentEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{bitEnvironmentController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditBitEnvironmentLabel_envId}" for="envId" />
+                        <p:inputText id="envId" value="#{bitEnvironmentController.selected.envId}" title="#{bundle.EditBitEnvironmentTitle_envId}" required="true" requiredMessage="#{bundle.EditBitEnvironmentRequiredMessage_envId}"/>
+                        <p:outputLabel value="#{bundle.EditBitEnvironmentLabel_envName}" for="envName" />
+                        <p:inputText id="envName" value="#{bitEnvironmentController.selected.envName}" title="#{bundle.EditBitEnvironmentTitle_envName}" />
+                        <p:outputLabel value="#{bundle.EditBitEnvironmentLabel_ADateCreate}" for="ADateCreate" />
+                        <p:calendar id="ADateCreate" pattern="MM/dd/yyyy HH:mm:ss" value="#{bitEnvironmentController.selected.ADateCreate}" title="#{bundle.EditBitEnvironmentTitle_ADateCreate}" required="true" requiredMessage="#{bundle.EditBitEnvironmentRequiredMessage_ADateCreate}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditBitEnvironmentLabel_AUserCreate}" for="AUserCreate" />
+                        <p:inputText id="AUserCreate" value="#{bitEnvironmentController.selected.AUserCreate}" title="#{bundle.EditBitEnvironmentTitle_AUserCreate}" required="true" requiredMessage="#{bundle.EditBitEnvironmentRequiredMessage_AUserCreate}"/>
+                        <p:outputLabel value="#{bundle.EditBitEnvironmentLabel_ADateChange}" for="ADateChange" />
+                        <p:calendar id="ADateChange" pattern="MM/dd/yyyy" value="#{bitEnvironmentController.selected.ADateChange}" title="#{bundle.EditBitEnvironmentTitle_ADateChange}" required="true" requiredMessage="#{bundle.EditBitEnvironmentRequiredMessage_ADateChange}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditBitEnvironmentLabel_AUserChange}" for="AUserChange" />
+                        <p:inputText id="AUserChange" value="#{bitEnvironmentController.selected.AUserChange}" title="#{bundle.EditBitEnvironmentTitle_AUserChange}" required="true" requiredMessage="#{bundle.EditBitEnvironmentRequiredMessage_AUserChange}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{bitEnvironmentController.update}" value="#{bundle.Save}" update="display,:BitEnvironmentListForm:datalist,:growl" oncomplete="handleSubmit(args, 'BitEnvironmentEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="BitEnvironmentEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

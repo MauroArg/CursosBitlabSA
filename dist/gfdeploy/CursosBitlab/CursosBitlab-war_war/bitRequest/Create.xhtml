@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="BitRequestCreateDlg" widgetVar="BitRequestCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateBitRequestTitle}">
+            <h:form id="BitRequestCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{bitRequestController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateBitRequestLabel_reqId}" for="reqId" />
+                        <p:inputText id="reqId" value="#{bitRequestController.selected.reqId}" title="#{bundle.CreateBitRequestTitle_reqId}" required="true" requiredMessage="#{bundle.CreateBitRequestRequiredMessage_reqId}"/>
+                        <p:outputLabel value="#{bundle.CreateBitRequestLabel_reqDateRequest}" for="reqDateRequest" />
+                        <p:calendar id="reqDateRequest" pattern="MM/dd/yyyy" value="#{bitRequestController.selected.reqDateRequest}" title="#{bundle.EditBitRequestTitle_reqDateRequest}" required="true" requiredMessage="#{bundle.EditBitRequestRequiredMessage_reqDateRequest}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateBitRequestLabel_ADateCreate}" for="ADateCreate" />
+                        <p:calendar id="ADateCreate" pattern="MM/dd/yyyy HH:mm:ss" value="#{bitRequestController.selected.ADateCreate}" title="#{bundle.EditBitRequestTitle_ADateCreate}" required="true" requiredMessage="#{bundle.EditBitRequestRequiredMessage_ADateCreate}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateBitRequestLabel_AUserCreate}" for="AUserCreate" />
+                        <p:inputText id="AUserCreate" value="#{bitRequestController.selected.AUserCreate}" title="#{bundle.CreateBitRequestTitle_AUserCreate}" required="true" requiredMessage="#{bundle.CreateBitRequestRequiredMessage_AUserCreate}"/>
+                        <p:outputLabel value="#{bundle.CreateBitRequestLabel_ADateChange}" for="ADateChange" />
+                        <p:calendar id="ADateChange" pattern="MM/dd/yyyy" value="#{bitRequestController.selected.ADateChange}" title="#{bundle.EditBitRequestTitle_ADateChange}" required="true" requiredMessage="#{bundle.EditBitRequestRequiredMessage_ADateChange}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateBitRequestLabel_AUserChange}" for="AUserChange" />
+                        <p:inputText id="AUserChange" value="#{bitRequestController.selected.AUserChange}" title="#{bundle.CreateBitRequestTitle_AUserChange}" required="true" requiredMessage="#{bundle.CreateBitRequestRequiredMessage_AUserChange}"/>
+                        <p:outputLabel value="#{bundle.CreateBitRequestLabel_couId}" for="couId" />
+                        <p:selectOneMenu id="couId" value="#{bitRequestController.selected.couId}" required="true" requiredMessage="#{bundle.EditBitRequestRequiredMessage_couId}">
+                            <f:selectItems value="#{bitCourseController.itemsAvailableSelectOne}"
+                                           var="couIdItem"
+                                           itemValue="#{couIdItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateBitRequestLabel_stuId}" for="stuId" />
+                        <p:selectOneMenu id="stuId" value="#{bitRequestController.selected.stuId}" required="true" requiredMessage="#{bundle.EditBitRequestRequiredMessage_stuId}">
+                            <f:selectItems value="#{bitStudentController.itemsAvailableSelectOne}"
+                                           var="stuIdItem"
+                                           itemValue="#{stuIdItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateBitRequestLabel_rqsId}" for="rqsId" />
+                        <p:selectOneMenu id="rqsId" value="#{bitRequestController.selected.rqsId}" required="true" requiredMessage="#{bundle.EditBitRequestRequiredMessage_rqsId}">
+                            <f:selectItems value="#{bitReqStatusController.itemsAvailableSelectOne}"
+                                           var="rqsIdItem"
+                                           itemValue="#{rqsIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{bitRequestController.create}" value="#{bundle.Save}" update="display,:BitRequestListForm:datalist,:growl" oncomplete="handleSubmit(args,'BitRequestCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="BitRequestCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

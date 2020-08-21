@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="BitStudentCreateDlg" widgetVar="BitStudentCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateBitStudentTitle}">
+            <h:form id="BitStudentCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{bitStudentController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateBitStudentLabel_stuId}" for="stuId" />
+                        <p:inputText id="stuId" value="#{bitStudentController.selected.stuId}" title="#{bundle.CreateBitStudentTitle_stuId}" required="true" requiredMessage="#{bundle.CreateBitStudentRequiredMessage_stuId}"/>
+                        <p:outputLabel value="#{bundle.CreateBitStudentLabel_stuName}" for="stuName" />
+                        <p:inputText id="stuName" value="#{bitStudentController.selected.stuName}" title="#{bundle.CreateBitStudentTitle_stuName}" required="true" requiredMessage="#{bundle.CreateBitStudentRequiredMessage_stuName}"/>
+                        <p:outputLabel value="#{bundle.CreateBitStudentLabel_stuLastName}" for="stuLastName" />
+                        <p:inputText id="stuLastName" value="#{bitStudentController.selected.stuLastName}" title="#{bundle.CreateBitStudentTitle_stuLastName}" required="true" requiredMessage="#{bundle.CreateBitStudentRequiredMessage_stuLastName}"/>
+                        <p:outputLabel value="#{bundle.CreateBitStudentLabel_stuDui}" for="stuDui" />
+                        <p:inputText id="stuDui" value="#{bitStudentController.selected.stuDui}" title="#{bundle.CreateBitStudentTitle_stuDui}" required="true" requiredMessage="#{bundle.CreateBitStudentRequiredMessage_stuDui}"/>
+                        <p:outputLabel value="#{bundle.CreateBitStudentLabel_stuPhone}" for="stuPhone" />
+                        <p:inputText id="stuPhone" value="#{bitStudentController.selected.stuPhone}" title="#{bundle.CreateBitStudentTitle_stuPhone}" required="true" requiredMessage="#{bundle.CreateBitStudentRequiredMessage_stuPhone}"/>
+                        <p:outputLabel value="#{bundle.CreateBitStudentLabel_stuImg}" for="stuImg" />
+                        <p:inputText id="stuImg" value="#{bitStudentController.selected.stuImg}" title="#{bundle.CreateBitStudentTitle_stuImg}" required="true" requiredMessage="#{bundle.CreateBitStudentRequiredMessage_stuImg}"/>
+                        <p:outputLabel value="#{bundle.CreateBitStudentLabel_stuCv}" for="stuCv" />
+                        <p:inputText id="stuCv" value="#{bitStudentController.selected.stuCv}" title="#{bundle.CreateBitStudentTitle_stuCv}" required="true" requiredMessage="#{bundle.CreateBitStudentRequiredMessage_stuCv}"/>
+                        <p:outputLabel value="#{bundle.CreateBitStudentLabel_stuAddress}" for="stuAddress" />
+                        <p:inputText id="stuAddress" value="#{bitStudentController.selected.stuAddress}" title="#{bundle.CreateBitStudentTitle_stuAddress}" required="true" requiredMessage="#{bundle.CreateBitStudentRequiredMessage_stuAddress}"/>
+                        <p:outputLabel value="#{bundle.CreateBitStudentLabel_stuBornDate}" for="stuBornDate" />
+                        <p:calendar id="stuBornDate" pattern="MM/dd/yyyy" value="#{bitStudentController.selected.stuBornDate}" title="#{bundle.EditBitStudentTitle_stuBornDate}" required="true" requiredMessage="#{bundle.EditBitStudentRequiredMessage_stuBornDate}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateBitStudentLabel_ADateCreate}" for="ADateCreate" />
+                        <p:calendar id="ADateCreate" pattern="MM/dd/yyyy HH:mm:ss" value="#{bitStudentController.selected.ADateCreate}" title="#{bundle.EditBitStudentTitle_ADateCreate}" required="true" requiredMessage="#{bundle.EditBitStudentRequiredMessage_ADateCreate}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateBitStudentLabel_AUserCreate}" for="AUserCreate" />
+                        <p:inputText id="AUserCreate" value="#{bitStudentController.selected.AUserCreate}" title="#{bundle.CreateBitStudentTitle_AUserCreate}" required="true" requiredMessage="#{bundle.CreateBitStudentRequiredMessage_AUserCreate}"/>
+                        <p:outputLabel value="#{bundle.CreateBitStudentLabel_ADateChange}" for="ADateChange" />
+                        <p:calendar id="ADateChange" pattern="MM/dd/yyyy" value="#{bitStudentController.selected.ADateChange}" title="#{bundle.EditBitStudentTitle_ADateChange}" required="true" requiredMessage="#{bundle.EditBitStudentRequiredMessage_ADateChange}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateBitStudentLabel_AUserChange}" for="AUserChange" />
+                        <p:inputText id="AUserChange" value="#{bitStudentController.selected.AUserChange}" title="#{bundle.CreateBitStudentTitle_AUserChange}" required="true" requiredMessage="#{bundle.CreateBitStudentRequiredMessage_AUserChange}"/>
+                        <p:outputLabel value="#{bundle.CreateBitStudentLabel_usrId}" for="usrId" />
+                        <p:selectOneMenu id="usrId" value="#{bitStudentController.selected.usrId}" required="true" requiredMessage="#{bundle.EditBitStudentRequiredMessage_usrId}">
+                            <f:selectItems value="#{bitUserController.itemsAvailableSelectOne}"
+                                           var="usrIdItem"
+                                           itemValue="#{usrIdItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateBitStudentLabel_stsId}" for="stsId" />
+                        <p:selectOneMenu id="stsId" value="#{bitStudentController.selected.stsId}" required="true" requiredMessage="#{bundle.EditBitStudentRequiredMessage_stsId}">
+                            <f:selectItems value="#{bitStuStatusController.itemsAvailableSelectOne}"
+                                           var="stsIdItem"
+                                           itemValue="#{stsIdItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateBitStudentLabel_schId}" for="schId" />
+                        <p:selectOneMenu id="schId" value="#{bitStudentController.selected.schId}" required="true" requiredMessage="#{bundle.EditBitStudentRequiredMessage_schId}">
+                            <f:selectItems value="#{bitScholarshipController.itemsAvailableSelectOne}"
+                                           var="schIdItem"
+                                           itemValue="#{schIdItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateBitStudentLabel_engId}" for="engId" />
+                        <p:selectOneMenu id="engId" value="#{bitStudentController.selected.engId}" required="true" requiredMessage="#{bundle.EditBitStudentRequiredMessage_engId}">
+                            <f:selectItems value="#{bitEnglishController.itemsAvailableSelectOne}"
+                                           var="engIdItem"
+                                           itemValue="#{engIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{bitStudentController.create}" value="#{bundle.Save}" update="display,:BitStudentListForm:datalist,:growl" oncomplete="handleSubmit(args,'BitStudentCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="BitStudentCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
