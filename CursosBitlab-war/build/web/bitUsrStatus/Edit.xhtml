@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="BitUsrStatusEditDlg" widgetVar="BitUsrStatusEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditBitUsrStatusTitle}">
+            <h:form id="BitUsrStatusEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{bitUsrStatusController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditBitUsrStatusLabel_ussId}" for="ussId" />
+                        <p:inputText id="ussId" value="#{bitUsrStatusController.selected.ussId}" title="#{bundle.EditBitUsrStatusTitle_ussId}" required="true" requiredMessage="#{bundle.EditBitUsrStatusRequiredMessage_ussId}"/>
+                        <p:outputLabel value="#{bundle.EditBitUsrStatusLabel_ussStatusName}" for="ussStatusName" />
+                        <p:inputText id="ussStatusName" value="#{bitUsrStatusController.selected.ussStatusName}" title="#{bundle.EditBitUsrStatusTitle_ussStatusName}" required="true" requiredMessage="#{bundle.EditBitUsrStatusRequiredMessage_ussStatusName}"/>
+                        <p:outputLabel value="#{bundle.EditBitUsrStatusLabel_ADateCreate}" for="ADateCreate" />
+                        <p:calendar id="ADateCreate" pattern="MM/dd/yyyy HH:mm:ss" value="#{bitUsrStatusController.selected.ADateCreate}" title="#{bundle.EditBitUsrStatusTitle_ADateCreate}" required="true" requiredMessage="#{bundle.EditBitUsrStatusRequiredMessage_ADateCreate}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditBitUsrStatusLabel_AUserCreate}" for="AUserCreate" />
+                        <p:inputText id="AUserCreate" value="#{bitUsrStatusController.selected.AUserCreate}" title="#{bundle.EditBitUsrStatusTitle_AUserCreate}" required="true" requiredMessage="#{bundle.EditBitUsrStatusRequiredMessage_AUserCreate}"/>
+                        <p:outputLabel value="#{bundle.EditBitUsrStatusLabel_ADateChange}" for="ADateChange" />
+                        <p:calendar id="ADateChange" pattern="MM/dd/yyyy" value="#{bitUsrStatusController.selected.ADateChange}" title="#{bundle.EditBitUsrStatusTitle_ADateChange}" required="true" requiredMessage="#{bundle.EditBitUsrStatusRequiredMessage_ADateChange}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditBitUsrStatusLabel_AUserChange}" for="AUserChange" />
+                        <p:inputText id="AUserChange" value="#{bitUsrStatusController.selected.AUserChange}" title="#{bundle.EditBitUsrStatusTitle_AUserChange}" required="true" requiredMessage="#{bundle.EditBitUsrStatusRequiredMessage_AUserChange}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{bitUsrStatusController.update}" value="#{bundle.Save}" update="display,:BitUsrStatusListForm:datalist,:growl" oncomplete="handleSubmit(args, 'BitUsrStatusEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="BitUsrStatusEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

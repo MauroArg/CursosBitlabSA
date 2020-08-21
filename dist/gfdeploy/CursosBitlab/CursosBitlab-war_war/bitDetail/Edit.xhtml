@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="BitDetailEditDlg" widgetVar="BitDetailEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditBitDetailTitle}">
+            <h:form id="BitDetailEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{bitDetailController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditBitDetailLabel_detId}" for="detId" />
+                        <p:inputText id="detId" value="#{bitDetailController.selected.detId}" title="#{bundle.EditBitDetailTitle_detId}" required="true" requiredMessage="#{bundle.EditBitDetailRequiredMessage_detId}"/>
+                        <p:outputLabel value="#{bundle.EditBitDetailLabel_ADateCreate}" for="ADateCreate" />
+                        <p:calendar id="ADateCreate" pattern="MM/dd/yyyy HH:mm:ss" value="#{bitDetailController.selected.ADateCreate}" title="#{bundle.EditBitDetailTitle_ADateCreate}" required="true" requiredMessage="#{bundle.EditBitDetailRequiredMessage_ADateCreate}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditBitDetailLabel_AUserCreate}" for="AUserCreate" />
+                        <p:inputText id="AUserCreate" value="#{bitDetailController.selected.AUserCreate}" title="#{bundle.EditBitDetailTitle_AUserCreate}" required="true" requiredMessage="#{bundle.EditBitDetailRequiredMessage_AUserCreate}"/>
+                        <p:outputLabel value="#{bundle.EditBitDetailLabel_ADateChange}" for="ADateChange" />
+                        <p:calendar id="ADateChange" pattern="MM/dd/yyyy" value="#{bitDetailController.selected.ADateChange}" title="#{bundle.EditBitDetailTitle_ADateChange}" required="true" requiredMessage="#{bundle.EditBitDetailRequiredMessage_ADateChange}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditBitDetailLabel_AUserChange}" for="AUserChange" />
+                        <p:inputText id="AUserChange" value="#{bitDetailController.selected.AUserChange}" title="#{bundle.EditBitDetailTitle_AUserChange}" required="true" requiredMessage="#{bundle.EditBitDetailRequiredMessage_AUserChange}"/>
+                        <p:outputLabel value="#{bundle.EditBitDetailLabel_stuId}" for="stuId" />
+                        <p:selectOneMenu id="stuId" value="#{bitDetailController.selected.stuId}" required="true" requiredMessage="#{bundle.EditBitDetailRequiredMessage_stuId}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{bitStudentController.itemsAvailableSelectOne}"
+                                           var="stuIdItem"
+                                           itemValue="#{stuIdItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditBitDetailLabel_skiId}" for="skiId" />
+                        <p:selectOneMenu id="skiId" value="#{bitDetailController.selected.skiId}" required="true" requiredMessage="#{bundle.EditBitDetailRequiredMessage_skiId}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{bitSkillController.itemsAvailableSelectOne}"
+                                           var="skiIdItem"
+                                           itemValue="#{skiIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{bitDetailController.update}" value="#{bundle.Save}" update="display,:BitDetailListForm:datalist,:growl" oncomplete="handleSubmit(args, 'BitDetailEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="BitDetailEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

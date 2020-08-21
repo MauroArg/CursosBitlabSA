@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="BitEnglishCreateDlg" widgetVar="BitEnglishCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateBitEnglishTitle}">
+            <h:form id="BitEnglishCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{bitEnglishController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateBitEnglishLabel_engId}" for="engId" />
+                        <p:inputText id="engId" value="#{bitEnglishController.selected.engId}" title="#{bundle.CreateBitEnglishTitle_engId}" required="true" requiredMessage="#{bundle.CreateBitEnglishRequiredMessage_engId}"/>
+                        <p:outputLabel value="#{bundle.CreateBitEnglishLabel_engLevelName}" for="engLevelName" />
+                        <p:inputText id="engLevelName" value="#{bitEnglishController.selected.engLevelName}" title="#{bundle.CreateBitEnglishTitle_engLevelName}" required="true" requiredMessage="#{bundle.CreateBitEnglishRequiredMessage_engLevelName}"/>
+                        <p:outputLabel value="#{bundle.CreateBitEnglishLabel_ADateCreate}" for="ADateCreate" />
+                        <p:calendar id="ADateCreate" pattern="MM/dd/yyyy HH:mm:ss" value="#{bitEnglishController.selected.ADateCreate}" title="#{bundle.EditBitEnglishTitle_ADateCreate}" required="true" requiredMessage="#{bundle.EditBitEnglishRequiredMessage_ADateCreate}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateBitEnglishLabel_AUserCreate}" for="AUserCreate" />
+                        <p:inputText id="AUserCreate" value="#{bitEnglishController.selected.AUserCreate}" title="#{bundle.CreateBitEnglishTitle_AUserCreate}" required="true" requiredMessage="#{bundle.CreateBitEnglishRequiredMessage_AUserCreate}"/>
+                        <p:outputLabel value="#{bundle.CreateBitEnglishLabel_ADateChange}" for="ADateChange" />
+                        <p:calendar id="ADateChange" pattern="MM/dd/yyyy" value="#{bitEnglishController.selected.ADateChange}" title="#{bundle.EditBitEnglishTitle_ADateChange}" required="true" requiredMessage="#{bundle.EditBitEnglishRequiredMessage_ADateChange}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateBitEnglishLabel_AUserChange}" for="AUserChange" />
+                        <p:inputText id="AUserChange" value="#{bitEnglishController.selected.AUserChange}" title="#{bundle.CreateBitEnglishTitle_AUserChange}" required="true" requiredMessage="#{bundle.CreateBitEnglishRequiredMessage_AUserChange}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{bitEnglishController.create}" value="#{bundle.Save}" update="display,:BitEnglishListForm:datalist,:growl" oncomplete="handleSubmit(args,'BitEnglishCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="BitEnglishCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
