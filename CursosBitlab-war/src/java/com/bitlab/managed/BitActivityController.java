@@ -23,6 +23,8 @@ import javax.faces.convert.FacesConverter;
 
 @ManagedBean
 @ViewScoped
+
+// Comentario prueba XD
 public class BitActivityController implements Serializable {
 
     @EJB
