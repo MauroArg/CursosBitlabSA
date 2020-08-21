@@ -1,2 +1,17 @@
+#ejb
 /CursosBitlab-ejb/build/
-/dist/
+/CursosBitlab-ejb/dist/
+
+/CursosBitlab-ejb/nbproject/ private/
+
+
+#war
+/CursosBitlab-ejb/CursosBitlab-war/build/
+/CursosBitlab-ejb/CursosBitlab-war/dist/
+
+/CursosBitlab-ejb/CursosBitlab-war/nbproject/ private/
+
+#ear
+
+/build/
+/nbproject/ private/
