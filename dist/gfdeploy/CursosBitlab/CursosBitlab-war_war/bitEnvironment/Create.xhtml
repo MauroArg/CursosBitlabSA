@@ -12,18 +12,8 @@
             <h:form id="BitEnvironmentCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{bitEnvironmentController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateBitEnvironmentLabel_envId}" for="envId" />
-                        <p:inputText id="envId" value="#{bitEnvironmentController.selected.envId}" title="#{bundle.CreateBitEnvironmentTitle_envId}" required="true" requiredMessage="#{bundle.CreateBitEnvironmentRequiredMessage_envId}"/>
                         <p:outputLabel value="#{bundle.CreateBitEnvironmentLabel_envName}" for="envName" />
                         <p:inputText id="envName" value="#{bitEnvironmentController.selected.envName}" title="#{bundle.CreateBitEnvironmentTitle_envName}" />
-                        <p:outputLabel value="#{bundle.CreateBitEnvironmentLabel_ADateCreate}" for="ADateCreate" />
-                        <p:calendar id="ADateCreate" pattern="MM/dd/yyyy HH:mm:ss" value="#{bitEnvironmentController.selected.ADateCreate}" title="#{bundle.EditBitEnvironmentTitle_ADateCreate}" required="true" requiredMessage="#{bundle.EditBitEnvironmentRequiredMessage_ADateCreate}" showOn="button"/>
-                        <p:outputLabel value="#{bundle.CreateBitEnvironmentLabel_AUserCreate}" for="AUserCreate" />
-                        <p:inputText id="AUserCreate" value="#{bitEnvironmentController.selected.AUserCreate}" title="#{bundle.CreateBitEnvironmentTitle_AUserCreate}" required="true" requiredMessage="#{bundle.CreateBitEnvironmentRequiredMessage_AUserCreate}"/>
-                        <p:outputLabel value="#{bundle.CreateBitEnvironmentLabel_ADateChange}" for="ADateChange" />
-                        <p:calendar id="ADateChange" pattern="MM/dd/yyyy" value="#{bitEnvironmentController.selected.ADateChange}" title="#{bundle.EditBitEnvironmentTitle_ADateChange}" required="true" requiredMessage="#{bundle.EditBitEnvironmentRequiredMessage_ADateChange}" showOn="button"/>
-                        <p:outputLabel value="#{bundle.CreateBitEnvironmentLabel_AUserChange}" for="AUserChange" />
-                        <p:inputText id="AUserChange" value="#{bitEnvironmentController.selected.AUserChange}" title="#{bundle.CreateBitEnvironmentTitle_AUserChange}" required="true" requiredMessage="#{bundle.CreateBitEnvironmentRequiredMessage_AUserChange}"/>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{bitEnvironmentController.create}" value="#{bundle.Save}" update="display,:BitEnvironmentListForm:datalist,:growl" oncomplete="handleSubmit(args,'BitEnvironmentCreateDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="BitEnvironmentCreateDialog.hide()"/>

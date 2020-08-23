@@ -18,10 +18,8 @@
                 <p:panel header="#{bundle.ListBitEnvironmentTitle}">
                     <p:dataTable id="datalist" value="#{bitEnvironmentController.items}" var="item"
                                  selectionMode="single" selection="#{bitEnvironmentController.selected}"
-                                 paginator="true"
                                  rowKey="#{item.envId}"
                                  rows="10"
-                                 rowsPerPageTemplate="10,20,30,40,50"
                                  >
 
                         <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
@@ -38,34 +36,6 @@
                                 <h:outputText value="#{bundle.ListBitEnvironmentTitle_envName}"/>
                             </f:facet>
                             <h:outputText value="#{item.envName}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListBitEnvironmentTitle_ADateCreate}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.ADateCreate}">
-                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
-                            </h:outputText>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListBitEnvironmentTitle_AUserCreate}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.AUserCreate}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListBitEnvironmentTitle_ADateChange}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.ADateChange}">
-                                <f:convertDateTime pattern="MM/dd/yyyy" />
-                            </h:outputText>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListBitEnvironmentTitle_AUserChange}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.AUserChange}"/>
                         </p:column>
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{bitEnvironmentController.prepareCreate}" update=":BitEnvironmentCreateForm" oncomplete="PF('BitEnvironmentCreateDialog').show()"/>

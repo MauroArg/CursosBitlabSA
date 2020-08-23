@@ -6,6 +6,7 @@ import com.bitlab.managed.util.JsfUtil.PersistAction;
 import com.bitlab.session.BitStudentFacade;
 
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -29,6 +30,7 @@ public class BitStudentController implements Serializable {
     private BitStudentFacade ejbFacade;
     private List<BitStudent> items = null;
     private BitStudent selected;
+    private Calendar date = Calendar.getInstance();
 
     public BitStudentController() {
     }
@@ -58,6 +60,11 @@ public class BitStudentController implements Serializable {
     }
 
     public void create() {
+        selected.setStuId(0);
+        selected.setADateCreate(date.getTime());
+        selected.setADateChange(date.getTime());
+        selected.setAUserChange("System");
+        selected.setAUserCreate("System");
         persist(PersistAction.CREATE, ResourceBundle.getBundle("/Bundle").getString("BitStudentCreated"));
         if (!JsfUtil.isValidationFailed()) {
             items = null;    // Invalidate list of items to trigger re-query.
@@ -65,6 +72,7 @@ public class BitStudentController implements Serializable {
     }
 
     public void update() {
+        selected.setADateChange(date.getTime());
         persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundle").getString("BitStudentUpdated"));
     }
 

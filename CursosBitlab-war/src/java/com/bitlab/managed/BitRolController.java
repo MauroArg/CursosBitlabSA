@@ -6,7 +6,9 @@ import com.bitlab.managed.util.JsfUtil.PersistAction;
 import com.bitlab.session.BitRolFacade;
 
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,6 +31,7 @@ public class BitRolController implements Serializable {
     private BitRolFacade ejbFacade;
     private List<BitRol> items = null;
     private BitRol selected;
+    private Calendar date = Calendar.getInstance();
 
     public BitRolController() {
     }
@@ -58,6 +61,11 @@ public class BitRolController implements Serializable {
     }
 
     public void create() {
+        selected.setRolId(0);
+        selected.setADateCreate(date.getTime());
+        selected.setADateChange(date.getTime());
+        selected.setAUserChange("System");
+        selected.setAUserCreate("System");
         persist(PersistAction.CREATE, ResourceBundle.getBundle("/Bundle").getString("BitRolCreated"));
         if (!JsfUtil.isValidationFailed()) {
             items = null;    // Invalidate list of items to trigger re-query.
@@ -65,6 +73,7 @@ public class BitRolController implements Serializable {
     }
 
     public void update() {
+        selected.setADateChange(date.getTime());
         persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundle").getString("BitRolUpdated"));
     }
 
