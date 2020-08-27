@@ -16,3 +16,8 @@
 /build/
 /nbproject/ private/
 /dist/
+/nbproject/private/
+/CursosBitlab-war/nbproject/private/
+/CursosBitlab-war/dist/
+/CursosBitlab-war/build/
+/CursosBitlab-ejb/nbproject/private/

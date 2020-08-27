@@ -25,6 +25,11 @@ public class BitSessionUser implements Serializable
     private BitUser tempSession;
     private BitUserFacade uc;
 
+    public BitSessionUser() {
+    }
+
+    
+    
     public BitUser getSession() {
         return session;
     }
@@ -68,8 +73,13 @@ public class BitSessionUser implements Serializable
         BitUser usr = new BitUser();
         boolean isNotValidUser = true;
         
+        System.out.println(tempSession.getUsrEmail());
+        System.out.println(tempSession.getUsrPassword());
         try{
             usr = uc.validarUsuario(tempSession.getUsrEmail());
+            
+            System.out.println(usr.getUsrPassword());
+            System.out.println(usr.getUsrEmail());
         }catch(Exception ex){
             usr = null;
         }
@@ -77,7 +87,7 @@ public class BitSessionUser implements Serializable
         if (usr != null) 
         {
             Encryption enc = new Encryption();
-            if (enc.encrypt(tempSession.getUsrPassword()).equals(usr.getUsrPassword())) 
+            if (tempSession.getUsrPassword().equals(usr.getUsrPassword())) 
             {
                 tempSession.setUsrId(usr.getUsrId());
                 tempSession.setRolId(usr.getRolId());

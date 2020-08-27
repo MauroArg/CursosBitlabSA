@@ -59,6 +59,12 @@ public class BitUserController implements Serializable {
         return selected;
     }
 
+    public void getUser(){
+        String email = "prueba@gmail.com";
+        BitUser user = getFacade().validarUsuario(email);
+        System.out.println(user.getUsrPassword());
+    }
+    
     public void create() {
         selected.setUsrId(0);
         selected.setADateCreate(date.getTime());

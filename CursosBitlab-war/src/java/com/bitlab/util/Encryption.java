@@ -18,7 +18,7 @@ import javax.crypto.spec.SecretKeySpec;
  *
  * @author Maury
  */
-public class Encryptor {
+public class Encryption {
     private static final String[] DATACRYPT = {"JDEV","DEV.JAVA"};
     
     public static String encrypt(String strToEncrypt) 
