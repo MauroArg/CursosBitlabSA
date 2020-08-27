@@ -23,7 +23,7 @@
                         <h:inputText class="input-flat" a:placeholder="Email" value="#{bitSessionUser.tempSession.usrEmail}"></h:inputText>
                         <h:inputSecret class="input-flat" a:placeholder="Password" value="#{bitSessionUser.tempSession.usrPassword}"></h:inputSecret>
                         <!--input type="button" class="button-flat btn btn-primary" value="Iniciar"/-->
-                        <h:commandButton class="button-flat btn btn-primary" value="Iniciar" actionListener="#{bitUserController.getUser()}"></h:commandButton>
+                        <h:commandButton class="button-flat btn btn-primary" value="Iniciar" actionListener="#{bitSessionUser.validateUser()}"></h:commandButton>
                         <input type="button" class="button-register-flat btn btn-primary" value="Registrarse" id="register"/>
                     </h:form>
                 </div>

@@ -21,6 +21,20 @@ public class BitUserFacade extends AbstractFacade<BitUser> {
     @PersistenceContext(unitName = "CursosBitlab-ejbPU")
     private EntityManager em;
     
+    public BitUser validateUser(String email)
+    {
+        try {
+            System.out.println("ValidateUser");
+            System.out.println(email);
+            Query q = em.createQuery("SELECT b FROM BitUser b WHERE b.usrEmail = :email");
+            q.setParameter("email", email);
+            BitUser usu = (BitUser) q.getSingleResult();
+        return  usu;
+        } catch (Exception e) {
+            System.out.println("Error in validate");
+            return null;
+        }
+    }
 
     @Override
     protected EntityManager getEntityManager() {
@@ -29,13 +43,6 @@ public class BitUserFacade extends AbstractFacade<BitUser> {
 
     public BitUserFacade() {
         super(BitUser.class);
-    }
-    
-    public BitUser validarUsuario(String email)
-    {
-        Query q = getEntityManager().createQuery("SELECT b FROM BitUser b WHERE b.usrEmail = :email");
-        q.setParameter("email", email);
-        return (BitUser) q.getSingleResult();
     }
     
 }

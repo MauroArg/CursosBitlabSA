@@ -10,6 +10,7 @@ import com.bitlab.session.BitUserFacade;
 import com.bitlab.util.Encryption;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
@@ -21,14 +22,22 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 public class BitSessionUser implements Serializable
 {
+    @EJB
+    private BitUserFacade userFacade;
     private BitUser session;
     private BitUser tempSession;
-    private BitUserFacade uc;
+    private BitUserController uc;
 
     public BitSessionUser() {
     }
 
-    
+    public BitUserFacade getUserFacade() {
+        return userFacade;
+    }
+
+    public void setUserFacade(BitUserFacade userFacade) {
+        this.userFacade = userFacade;
+    }
     
     public BitUser getSession() {
         return session;
@@ -38,7 +47,7 @@ public class BitSessionUser implements Serializable
         this.session = session;
     }
 
-    public BitSessionUser(BitUser session, BitUserFacade uc) {
+    public BitSessionUser(BitUser session, BitUserController uc) {
         this.session = session;
         this.uc = uc;
     }
@@ -51,11 +60,11 @@ public class BitSessionUser implements Serializable
         this.tempSession = tempSession;
     }
 
-    public BitUserFacade getUc() {
+    public BitUserController getUc() {
         return uc;
     }
 
-    public void setUc(BitUserFacade uc) {
+    public void setUc(BitUserController uc) {
         this.uc = uc;
     }
     
@@ -65,21 +74,20 @@ public class BitSessionUser implements Serializable
     {
         session = new BitUser();
         tempSession = new BitUser();
-        uc = new BitUserFacade();
+        uc = new BitUserController();
     }
     
     public void validateUser()
     {
+        
         BitUser usr = new BitUser();
         boolean isNotValidUser = true;
         
-        System.out.println(tempSession.getUsrEmail());
-        System.out.println(tempSession.getUsrPassword());
         try{
-            usr = uc.validarUsuario(tempSession.getUsrEmail());
+            usr = userFacade.validateUser(tempSession.getUsrEmail());
             
-            System.out.println(usr.getUsrPassword());
-            System.out.println(usr.getUsrEmail());
+            System.out.println("Pass: " + usr.getUsrPassword());
+            System.out.println("Mail: " + usr.getUsrEmail());
         }catch(Exception ex){
             usr = null;
         }
