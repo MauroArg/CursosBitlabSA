@@ -1,0 +1,69 @@
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <div class="log-in">
+        <button class="hideLogin" style="width: 50px;padding:10px;"><em class="fas fa-times"></em></button>
+        <div class="login-card">
+            <div class="row">
+
+                <div class="col-md-6 login-img-col">
+                    <div class="login-img">
+
+                    </div>
+                </div>
+                <div class="col-md-6 text-center login-form">
+                    <h4>Inicio de Sesión</h4>
+                    <form action="">
+                        <input type="text" class="input-flat" placeholder="Usuario"/>
+                        <input type="password" class="input-flat" placeholder="Contraseña"/>
+                        <input type="button" class="button-flat btn btn-primary" value="Iniciar"/>
+                        <input type="button" class="button-register-flat btn btn-primary" value="Registrarse" id="register"/>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="register-card">
+            <div class="row">
+                <div class="col-md-12 text-center register-form">
+                    <form action="">
+                        <h4>Registro de usuario</h4>
+                        <div class="first-part">
+                            <input type="button" class="returnToLogin" id="toLogin" value="Ya tengo una cuenta"/>
+                            <input type="text" class="form-control input-flat" placeholder="Nombre Completo"/>
+                            <input type="text" class="form-control input-flat" placeholder="Fecha de Nacimiento"/>
+                            <input type="text" class="form-control input-flat" placeholder="Teléfono"/>
+                            <input type="text" class="form-control input-flat" placeholder="Inglés"/>
+                            <input type="text" class="form-control input-flat" placeholder="Nivel Académico"/>
+                            <input type="text" class="form-control input-flat" placeholder="Correo"/>
+                            <input type="text" class="form-control input-flat" placeholder="DUI"/>
+                            <input type="button" class="button-flat toSecondPart" value="Continuar"/>
+                        </div>
+                        <div class="second-part">
+                            <input type="button" class="toFirstPart returnToLogin" value="Regresar"/>
+                            <div class="form-control file-input-flat">
+                                <input type="file" class="file-input-flat btn btn-primary" id="cv" style="display: none;"/>
+                                <label for="cv" >Subir Curriculum Vitae</label>
+                            </div>
+                            <div class="form-control file-input-flat">
+                                <input type="file" class="file-input-flat btn btn-primary" id="foto" style="display: none;"/>
+                                <label for="foto" >Foto</label>
+                            </div>
+                            <hr/>
+                            <label style="color:gray;">Digite sus datos de usuario</label>
+                            <input type="text" class="form-control input-flat" placeholder="Usuario"/>
+                            <input type="password" class="form-control input-flat" placeholder="Contraseña"/>
+                            <input type="password" class="form-control input-flat" placeholder="Confirmar contraseña"/>
+                            <input type="button" class="button-flat" value="Registrar"/>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div> 
+</ui:composition>
+

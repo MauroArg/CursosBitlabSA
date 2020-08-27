@@ -6,6 +6,7 @@ import com.bitlab.managed.util.JsfUtil.PersistAction;
 import com.bitlab.session.BitCourseFacade;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -31,6 +32,8 @@ public class BitCourseController implements Serializable {
     private List<BitCourse> items = null;
     private BitCourse selected;
     private Calendar date = Calendar.getInstance();
+    private String strDateFormat = "dd MMMM yyyy"; // El formato de fecha está especificado  
+    private SimpleDateFormat objSDF = new SimpleDateFormat(strDateFormat); // La cadena de formato de fecha se pasa como un argumento al objeto
 
     public BitCourseController() {
     }
@@ -42,6 +45,15 @@ public class BitCourseController implements Serializable {
     public void setSelected(BitCourse selected) {
         this.selected = selected;
     }
+
+    public SimpleDateFormat getObjSDF() {
+        return objSDF;
+    }
+
+    public void setObjSDF(SimpleDateFormat objSDF) {
+        this.objSDF = objSDF;
+    }
+    
 
     protected void setEmbeddableKeys() {
     }

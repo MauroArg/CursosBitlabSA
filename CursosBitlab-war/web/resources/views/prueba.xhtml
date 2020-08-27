@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <body>
+
+        <ui:composition template="./../template/template.xhtml">
+            
+            <ui:define name="title">
+                APP | EXAMPLE
+            </ui:define>
+            <ui:define name="view">
+                <ui:include src="./../modules/menu.xhtml"></ui:include>
+                <!--ui:include src="./../modules/courses.xhtml"></ui:include-->
+                
+                <div class="row" id="requests">
+                    <ui:repeat value="#{bitCourseController.items}" var="item">
+                    <div class="row request">
+                        <div class="col-md-3 text-center request-data">
+                            <div>
+                                <h4>#{item.couName}</h4>
+                                <p>#{bitCourseController.objSDF.format(item.couStartDate)}</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 request-description">
+                            <p>#{item.couDescription}</p>
+                        </div>
+                        <div class="col-md-3 request-state">
+                            <div class="state text-center" style="background-color:blueviolet;"><p>Aplicar</p></div>
+                        </div>
+                    </div>
+                    </ui:repeat>
+                </div>
+                <ui:include src="./../modules/login.xhtml"></ui:include>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>
