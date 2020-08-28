@@ -83,6 +83,11 @@ public class BitRequestController implements Serializable {
             items = null;    // Invalidate list of items to trigger re-query.
         }
     }
+    
+    public List<BitRequest> getRequestByStudent(int id)
+    {
+        return getFacade().getRequestByStudent(id);
+    }
 
     public List<BitRequest> getItems() {
         if (items == null) {
