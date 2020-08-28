@@ -6,8 +6,21 @@
     xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <div class="menu-bar">
-        <img src="./resources/img/bitlab.jpeg" alt="false" class="logo"/>
-        <button class="showLogin">Ingresar</button>
+        <c:if test="#{bitSessionUser.session != null}"> 
+            <c:if test="#{bitSessionUser.session.rolId.rolId == 1}"> 
+                <button class="menu"><em class="fas fa-bars"></em></button>
+                <img src="../img/bitlab.jpeg" alt="false" class="logo"/>
+            </c:if>
+            <c:if test="#{bitSessionUser.session.rolId.rolId != 1}"> 
+                <img src="./resources/img/bitlab.jpeg" alt="false" class="logo"/>
+                <button class="showLogin">Ingresar</button>
+            </c:if>
+        </c:if>
     </div>
+    <c:if test="#{bitSessionUser.session.rolId != null}"> 
+        <c:if test="#{bitSessionUser.session.rolId.rolId == 1}"> 
+            <ui:include src="./menu-estudiante.xhtml"></ui:include>
+        </c:if>
+    </c:if>
 </ui:composition>
 

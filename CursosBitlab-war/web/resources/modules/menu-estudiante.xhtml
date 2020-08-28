@@ -1,0 +1,21 @@
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <div class="menu-box">
+        <button class="hideMenu" onclick="toggleMenu();"><em class="fas fa-times"></em></button>
+
+        <div class="menu-img"></div>
+        <ul class="menu-list">
+            <li class="menu-item profile-item" onclick="showProfile();"><em class="fas fa-user"></em>   Perfil</li>
+            <!--li class="menu-item courses-item" onclick="showCourses();">Mis cursos</li-->
+            <li class="menu-item request-item" onclick="showRequests();"><em class="fas fa-graduation-cap"></em> Mis Cursos</li>
+            <li class="menu-item request-item" onclick="showCourses();"><em class="fas fa-university"></em> Aplicar</li>
+        </ul>
+
+        <h5 class="copyright-menu text-center"><em class="fas fa-copyright"></em>Bitlab Skills Academy</h5>
+    </div>
+    
+</ui:composition>

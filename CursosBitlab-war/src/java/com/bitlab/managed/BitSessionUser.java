@@ -5,14 +5,20 @@
  */
 package com.bitlab.managed;
 
+import com.bitlab.entities.BitStudent;
 import com.bitlab.entities.BitUser;
+import com.bitlab.session.BitStudentFacade;
 import com.bitlab.session.BitUserFacade;
 import com.bitlab.util.Encryption;
+import java.io.IOException;
 import java.io.Serializable;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -24,9 +30,12 @@ public class BitSessionUser implements Serializable
 {
     @EJB
     private BitUserFacade userFacade;
+    private BitStudentFacade studentFacade;
     private BitUser session;
     private BitUser tempSession;
     private BitUserController uc;
+    private BitStudent student;
+    private boolean isStudent; 
 
     public BitSessionUser() {
     }
@@ -37,6 +46,10 @@ public class BitSessionUser implements Serializable
 
     public void setUserFacade(BitUserFacade userFacade) {
         this.userFacade = userFacade;
+    }
+    
+    public BitStudentFacade getStudentFacade() {
+        return studentFacade;
     }
     
     public BitUser getSession() {
@@ -66,6 +79,22 @@ public class BitSessionUser implements Serializable
 
     public void setUc(BitUserController uc) {
         this.uc = uc;
+    }
+
+    public boolean isIsStudent() {
+        return isStudent;
+    }
+
+    public void setIsStudent(boolean isStudent) {
+        this.isStudent = isStudent;
+    }
+
+    public BitStudent getStudent() {
+        return student;
+    }
+
+    public void setStudent(BitStudent student) {
+        this.student = student;
     }
     
     
@@ -102,8 +131,18 @@ public class BitSessionUser implements Serializable
                 tempSession.setUsrEmail(usr.getUsrEmail());
                 
                 session = tempSession;
+                
+                
+            
+                student = new  BitStudent();
+                student = getStudentByUser(session);
+                
                 isNotValidUser = false;
-                System.out.println("ENTRO");
+                System.out.println("Nombre: " + student.getStuName());
+                sendRedirect("resources/views/estudiante.bitlab");
+                if(session.getRolId().getRolId()==1){
+                    
+                }
             }
         }
         
@@ -112,6 +151,12 @@ public class BitSessionUser implements Serializable
             System.out.println("IS NOT VALID USER");
         }
     }
+    
+    public BitStudent getStudentByUser(int id)
+    {
+        return getStudentFacade().getStudentByUser(id);
+    }
+    
     
     public void validarSesion()
     {
@@ -122,5 +167,12 @@ public class BitSessionUser implements Serializable
         }
     }
     
+    public void sendRedirect(String url){
+        try {
+            FacesContext.getCurrentInstance().getExternalContext().redirect(url);
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
     
 }

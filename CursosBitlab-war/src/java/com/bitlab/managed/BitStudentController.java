@@ -70,11 +70,6 @@ public class BitStudentController implements Serializable {
             items = null;    // Invalidate list of items to trigger re-query.
         }
     }
-    
-    public BitStudent getStudentByUser(int id)
-    {
-        return getFacade().getStudentByUser(id);
-    }
 
     public void update() {
         selected.setADateChange(date.getTime());

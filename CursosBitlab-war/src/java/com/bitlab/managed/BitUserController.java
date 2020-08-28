@@ -1,8 +1,10 @@
 package com.bitlab.managed;
 
+import com.bitlab.entities.BitStudent;
 import com.bitlab.entities.BitUser;
 import com.bitlab.managed.util.JsfUtil;
 import com.bitlab.managed.util.JsfUtil.PersistAction;
+import com.bitlab.session.BitStudentFacade;
 import com.bitlab.session.BitUserFacade;
 
 import java.io.Serializable;
@@ -53,6 +55,8 @@ public class BitUserController implements Serializable {
         return ejbFacade;
     }
 
+    
+
     public BitUser prepareCreate() {
         selected = new BitUser();
         initializeEmbeddableKey();
@@ -90,7 +94,8 @@ public class BitUserController implements Serializable {
         }
         return items;
     }
-
+    
+    
     private void persist(PersistAction persistAction, String successMessage) {
         if (selected != null) {
             setEmbeddableKeys();

@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="./../template/template.xhtml">
+
+            <ui:define name="title">
+                App | Estudiante
+            </ui:define>
+            <ui:define name="custom-import">
+                <script src="../js/custom/estudiante.js"></script>
+            </ui:define>
+            <ui:define name="view">
+                <div class="row" id="requests">
+                    <ui:repeat value="#{bitCourseController.items}" var="item">
+                        <div class="row request">
+                            <div class="col-md-3 text-center request-data">
+                                <div>
+                                    <h4>#{item.couName}</h4>
+                                    <p>#{bitCourseController.objSDF.format(item.couStartDate)}</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6 request-description">
+                                <p>#{item.couDescription}</p>
+                            </div>
+                            <div class="col-md-3 request-state">
+                                <div class="state text-center" style="background-color:blueviolet;"><p>Aplicar</p></div>
+                            </div>
+                        </div>
+                    </ui:repeat>
+                </div>
+                
+                <div class="row" id="courses">
+                    <h:form>
+                    <ui:repeat value="#{bitCourseController.items}" var="item">
+                        <div class="row request">
+                            <div class="col-md-3 text-center request-data">
+                                <div>
+                                    <h4>#{item.couName}</h4>
+                                    <p>#{bitCourseController.objSDF.format(item.couStartDate)}</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6 request-description">
+                                <p>#{item.couDescription}</p>
+                            </div>
+                            <div class="col-md-3 request-state">
+                                <input type='button' class="apply text-center" style="background-color:blueviolet;border:none;" onclick="$('.#{item.couName}').click();" value='Aplicar'/>
+                                
+                                <p:commandButton value="#{item.couName}" styleClass="prepareToApply #{item.couName}" ></p:commandButton>
+                            </div>
+                        </div>
+                    </ui:repeat>    
+                    </h:form>
+                </div>
+                <ui:include src="../modules/profile.xhtml"></ui:include>
+                
+                
+            </ui:define>
+        </ui:composition>
+
+    </body>
+</html>

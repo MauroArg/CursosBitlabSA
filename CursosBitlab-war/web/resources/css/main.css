@@ -615,7 +615,7 @@ body{
     width: 100%;
 }
 
-#requests,#profile{
+#requests,#profile,#courses{
     margin-top: 100px;
     align-items: center;
     justify-content: center;
@@ -694,6 +694,33 @@ body{
     color: white;
     background-color: dodgerblue;
     border-radius: 15px;
+}
+
+.request-state .apply{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+
+    margin: auto;
+    padding:auto;
+
+    width: 120px;
+    height: 40px;
+    color: white;
+    background-color: dodgerblue;
+    border-radius: 15px;
+    
+    cursor:pointer;
+}
+
+.request-state .apply:focus{
+    outline:none !important;
+    outline-width: 0 !important;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none
 }
 
 
