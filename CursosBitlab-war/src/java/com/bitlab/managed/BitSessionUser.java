@@ -135,7 +135,7 @@ public class BitSessionUser implements Serializable
                 
             
                 student = new  BitStudent();
-                student = getStudentByUser(session);
+                student = getStudentByUser(session.getUsrId());
                 
                 isNotValidUser = false;
                 System.out.println("Nombre: " + student.getStuName());

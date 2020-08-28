@@ -6,6 +6,7 @@
 package com.bitlab.session;
 
 import com.bitlab.entities.BitStudent;
+import com.bitlab.entities.BitUser;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -30,13 +31,13 @@ public class BitStudentFacade extends AbstractFacade<BitStudent> {
         super(BitStudent.class);
     }
     
-    public BitStudent getStudentByUser(int id)
+    public BitStudent getStudentByUser(int user)
     {
         try {
             System.out.println("ValidateUser");
-            System.out.println(id);
-            Query q = em.createQuery("SELECT b FROM BitStudent b WHERE b.usr_id = :id");
-            q.setParameter("id", id);
+            System.out.println(user);
+            Query q = em.createQuery("SELECT b FROM BitStudent b WHERE b.usrId.usrId = :user");
+            q.setParameter("user", user);
             BitStudent stu = (BitStudent) q.getSingleResult();
         return  stu;
         } catch (Exception e) {

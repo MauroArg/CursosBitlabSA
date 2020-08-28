@@ -31,13 +31,13 @@ public class BitRequestFacade extends AbstractFacade<BitRequest> {
         super(BitRequest.class);
     }
     
-    public List<BitRequest> getRequestByStudent(int id)
+    public List<BitRequest> getRequestByStudent(int estudiante)
     {
         try {
             System.out.println("Request");
-            System.out.println(id);
-            Query q = em.createQuery("SELECT b FROM BitRequest b WHERE b.stu_id = :id");
-            q.setParameter("id", id);
+            System.out.println(estudiante);
+            Query q = em.createQuery("SELECT b FROM BitRequest b WHERE b.stuId.stuId = :estudiante");
+            q.setParameter("estudiante", estudiante);
             List<BitRequest> req = (List<BitRequest>) q.getResultList();
         return  req;
         } catch (Exception e) {
