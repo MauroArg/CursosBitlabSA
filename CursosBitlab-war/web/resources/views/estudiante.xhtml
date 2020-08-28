@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <body>
 
@@ -17,19 +18,19 @@
             </ui:define>
             <ui:define name="view">
                 <div class="row" id="requests">
-                    <ui:repeat value="#{bitCourseController.items}" var="item">
+                    <ui:repeat value="#{bitRequestController.getRequestByStudent(bitSessionUser.student.stuId)}" var="item">
                         <div class="row request">
                             <div class="col-md-3 text-center request-data">
                                 <div>
-                                    <h4>#{item.couName}</h4>
-                                    <p>#{bitCourseController.objSDF.format(item.couStartDate)}</p>
+                                    <h4>#{item.couId.couName}</h4>
+                                    <p>#{bitCourseController.objSDF.format(item.ADateCreate)}</p>
                                 </div>
                             </div>
                             <div class="col-md-6 request-description">
-                                <p>#{item.couDescription}</p>
+                                <p>#{item.couId.couDescription}</p>
                             </div>
                             <div class="col-md-3 request-state">
-                                <div class="state text-center" style="background-color:blueviolet;"><p>Aplicar</p></div>
+                                <div class="state text-center" style="background-color:blueviolet;"><p>#{item.rqsId.rsqStatusName}</p></div>
                             </div>
                         </div>
                     </ui:repeat>
@@ -51,15 +52,21 @@
                             <div class="col-md-3 request-state">
                                 <input type='button' class="apply text-center" style="background-color:blueviolet;border:none;" onclick="$('.#{item.couName}').click();" value='Aplicar'/>
                                 
-                                <p:commandButton value="#{item.couName}" styleClass="prepareToApply #{item.couName}" ></p:commandButton>
+                                <p:commandButton value="#{item.couName}" styleClass="prepareToApply #{item.couName}" style="display:none;" onclick="alert('#{item.couName} button pressed');">
+                                    <f:setPropertyActionListener target="#{bitRequestController.course}" value="#{item}"/>
+                                    <f:setPropertyActionListener target="#{bitRequestController.course}" value="#{bitSessionUser.student}"/>
+                                </p:commandButton>
+                                
+                                
                             </div>
                         </div>
                     </ui:repeat>    
                     </h:form>
                 </div>
                 <ui:include src="../modules/profile.xhtml"></ui:include>
-                
-                
+                <h:form>
+                    
+                </h:form>
             </ui:define>
         </ui:composition>
 

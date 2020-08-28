@@ -1,6 +1,8 @@
 package com.bitlab.managed;
 
+import com.bitlab.entities.BitCourse;
 import com.bitlab.entities.BitRequest;
+import com.bitlab.entities.BitStudent;
 import com.bitlab.managed.util.JsfUtil;
 import com.bitlab.managed.util.JsfUtil.PersistAction;
 import com.bitlab.session.BitRequestFacade;
@@ -29,6 +31,9 @@ public class BitRequestController implements Serializable {
     @EJB
     private BitRequestFacade ejbFacade;
     private List<BitRequest> items = null;
+    private List<BitRequest> itemsByStudent = null;
+    private BitStudent student;
+    private BitCourse course;
     private BitRequest selected;
     private Calendar date = Calendar.getInstance();
 
@@ -59,7 +64,26 @@ public class BitRequestController implements Serializable {
         return selected;
     }
 
+    public BitStudent getStudent() {
+        return student;
+    }
+
+    public void setStudent(BitStudent student) {
+        this.student = student;
+    }
+
+    public BitCourse getCourse() {
+        return course;
+    }
+
+    public void setCourse(BitCourse course) {
+        this.course = course;
+    }
+    
+
     public void create() {
+        selected.setCouId(course);
+        selected.setStuId(student);
         selected.setReqId(0);
         selected.setADateCreate(date.getTime());
         selected.setADateChange(date.getTime());
@@ -86,7 +110,13 @@ public class BitRequestController implements Serializable {
     
     public List<BitRequest> getRequestByStudent(int id)
     {
-        return getFacade().getRequestByStudent(id);
+        itemsByStudent = getFacade().getRequestByStudent(id);
+        
+        for(BitRequest re: itemsByStudent){
+            System.out.println("CURSO: " + re.getCouId().getCouName());
+        }
+        
+        return itemsByStudent;
     }
 
     public List<BitRequest> getItems() {

@@ -30,6 +30,7 @@ public class BitSessionUser implements Serializable
 {
     @EJB
     private BitUserFacade userFacade;
+    @EJB
     private BitStudentFacade studentFacade;
     private BitUser session;
     private BitUser tempSession;
@@ -117,6 +118,7 @@ public class BitSessionUser implements Serializable
             
             System.out.println("Pass: " + usr.getUsrPassword());
             System.out.println("Mail: " + usr.getUsrEmail());
+            System.out.println("ID: " + usr.getUsrId());
         }catch(Exception ex){
             usr = null;
         }
@@ -130,12 +132,11 @@ public class BitSessionUser implements Serializable
                 tempSession.setRolId(usr.getRolId());
                 tempSession.setUsrEmail(usr.getUsrEmail());
                 
+                System.out.println("id de session temporal: " + tempSession.getUsrId());
                 session = tempSession;
-                
-                
-            
+                System.out.println("id de session: " + session.getUsrId());
                 student = new  BitStudent();
-                student = getStudentByUser(session.getUsrId());
+                student = getStudentFacade().getStudentByUser(session.getUsrId());
                 
                 isNotValidUser = false;
                 System.out.println("Nombre: " + student.getStuName());
