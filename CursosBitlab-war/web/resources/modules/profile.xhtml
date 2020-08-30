@@ -3,74 +3,77 @@
     xmlns:f="http://xmlns.jcp.org/jsf/core"
     xmlns:h="http://xmlns.jcp.org/jsf/html"
     xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-    xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+    xmlns:p="http://primefaces.org/ui">
     <div class="row" id="profile">
         <div class="data">
             <form action="">
-                <div class="row">
-                    <div class="col-md-6">
-                        <label for="">Nombre</label>
-                        <input type="text" class="form-control" placeholder="Nombre" value=""/> 
-                        <br/>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="">Fecha de Nacimiento</label>
-                        <input type="date" class="form-control" placeholder="Fecha de prueba" value="20/08/2020"/> 
-                        <br/>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <label for="">Teléfono</label>
-                        <input type="tel" class="form-control" placeholder="Teléfono" value=""/> 
-                        <br/>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="">Nivel de inglés</label>
-                        <select class="form-control select-input" placeholder="Inglés">
-                            <option value="Basico"  class="select-input">Básico</option>
-                            <option value="Intermedio"  class="select-input">Intermedio</option>
-                            <option value="Avanzado"  class="select-input">Avanzado</option>
-                        </select>
-                        <br/>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <label for="">Nivel Académico</label>
-                        <input type="text" class="form-control" placeholder="Nivel académico" value=""/> 
-                        <br/>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="">Correo</label>
-                        <input type="email" class="form-control" placeholder="Correo" Value="correodeprueba@correo.com"/> 
-                        <br/>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <label for="">DUI</label>
-                        <input type="text" class="form-control" placeholder="DUI" value=""/> 
-                        <br/>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="">Curriculum Vitae</label>
-                        <div class="form-control btn btn-primary" style="height: 40px;">
-                            <input type="file" class="file-input-flat btn btn-primary" id="cv" style="display: none;"
-                                   onchange="$('#cv-lbl').text($('#cv')[0].files[0].name)"/>
-                            <label for="cv" id="cv-lbl">Subir Curriculum Vitae</label>
+                <h:form enctype="multipart/form-data">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="">Nombre</label>
+                            <input type="text" class="form-control" placeholder="Nombre" value=""/> 
+                            <br/>
                         </div>
-                        <br/>
-                        <br/>
+                        <div class="col-md-6">
+                            <label for="">Fecha de Nacimiento</label>
+                            <input type="date" class="form-control" placeholder="Fecha de prueba" value="20/08/2020"/> 
+                            <br/>
+                        </div>
                     </div>
-                </div>
-                <div class="row" >
-                    <div class="col-md-6">
-                        <input type="button" class="btn btn-success" placeholder="DUI" value="Guardar"/> 
-                        <br/>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="">Teléfono</label>
+                            <input type="tel" class="form-control" placeholder="Teléfono" value=""/> 
+                            <br/>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="">Nivel de inglés</label>
+                            <select class="form-control select-input" placeholder="Inglés">
+                                <option value="Basico"  class="select-input">Básico</option>
+                                <option value="Intermedio"  class="select-input">Intermedio</option>
+                                <option value="Avanzado"  class="select-input">Avanzado</option>
+                            </select>
+                            <br/>
+                        </div>
                     </div>
-                </div>
-
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="">Nivel Académico</label>
+                            <input type="text" class="form-control" placeholder="Nivel académico" value=""/> 
+                            <br/>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="">Correo</label>
+                            <input type="email" class="form-control" placeholder="Correo" Value="correodeprueba@correo.com"/> 
+                            <br/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="">DUI</label>
+                            <input type="text" class="form-control" placeholder="DUI" value=""/> 
+                            <br/>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="">Curriculum Vitae</label>
+                            <!--                        <div class="form-control btn btn-primary" style="height: 40px;">
+                                                        <input type="file" class="file-input-flat btn btn-primary" id="cv" style="display: none;"
+                                                               onchange="$('#cv-lbl').text($('#cv')[0].files[0].name)"/>
+                                                        <label for="cv" id="cv-lbl">Subir Curriculum Vitae</label>                            
+                                                    </div>-->
+                            <p:fileUpload value="#{fileUploadView.files}" mode="simple" skinSimple="true" multiple="true" />
+                            <br/>
+                            <br/>
+                        </div>
+                    </div>
+                    <div class="row" >
+                        <div class="col-md-6">
+                            <input type="button" class="btn btn-success" placeholder="DUI" value="Guardar"/> 
+                            <br/>
+                        </div>
+                    </div>
+                </h:form>
             </form>
         </div>
     </div>
