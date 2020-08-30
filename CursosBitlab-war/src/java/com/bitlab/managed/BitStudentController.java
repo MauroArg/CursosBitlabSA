@@ -4,6 +4,7 @@ import com.bitlab.entities.BitStudent;
 import com.bitlab.managed.util.JsfUtil;
 import com.bitlab.managed.util.JsfUtil.PersistAction;
 import com.bitlab.session.BitStudentFacade;
+import com.bitlab.util.UploadFile;
 
 import java.io.Serializable;
 import java.util.Calendar;
@@ -11,6 +12,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.EJBException;
 import javax.inject.Named;
@@ -21,6 +23,7 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
+import org.primefaces.model.file.UploadedFile;
 
 @ManagedBean
 @ViewScoped
@@ -31,10 +34,32 @@ public class BitStudentController implements Serializable {
     private List<BitStudent> items = null;
     private BitStudent selected;
     private Calendar date = Calendar.getInstance();
-
+    private UploadedFile file;
+    private String destination;
+    
+    private UploadFile uf = new UploadFile();
     public BitStudentController() {
     }
 
+    public UploadedFile getFile() {
+        return file;
+    }
+
+    public void setFile(UploadedFile file) {
+        this.file = file;
+    }
+
+    
+
+    public String getDestination() {
+        return destination;
+    }
+
+    public void setDestination(String destination) {
+        this.destination = destination;
+    }
+    
+        
     public BitStudent getSelected() {
         return selected;
     }
@@ -171,5 +196,17 @@ public class BitStudentController implements Serializable {
         }
 
     }
-
+    
+    public void newDocument(){
+        if(uf.upload(this.getFile(), selected.getStuId())){
+            selected.setStuImg(uf.SEPARATOR + destination);
+            create();
+            destination = "";
+        }
+    }
+    
+    @PostConstruct
+    public void init(){
+        selected = new BitStudent();
+    }
 }
