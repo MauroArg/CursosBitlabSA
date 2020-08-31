@@ -1,23 +1,24 @@
-#ejb
+
 /CursosBitlab-ejb/build/
 /CursosBitlab-ejb/dist/
+/CursosBitlab-ejb/nbproject/
+/CursosBitlab-ejb/build.xml
 
-/CursosBitlab-ejb/nbproject/ private/
 
-
-#war
-/CursosBitlab-ejb/CursosBitlab-war/build/
-/CursosBitlab-ejb/CursosBitlab-war/dist/
-
-/CursosBitlab-ejb/CursosBitlab-war/nbproject/ private/
-
-#ear
-
-/build/
-/nbproject/ private/
-/dist/
-/nbproject/private/
-/CursosBitlab-war/nbproject/private/
+/CursosBitlab-war/nbproject/
 /CursosBitlab-war/dist/
 /CursosBitlab-war/build/
-/CursosBitlab-ejb/nbproject/private/
+/CursosBitlab-war/build.xml
+
+
+
+/build/
+/nbproject/
+/dist/
+/build.xml
+
+
+
+
+
+
