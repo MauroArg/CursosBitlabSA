@@ -12,19 +12,22 @@
                     <div class="row">
                         <div class="col-md-6">
                             <label for="">Nombre</label>
-                            <input type="text" class="form-control" placeholder="Nombre" value=""/> 
+                            <input type="text" class="form-control" placeholder="Nombre" 
+                                   value="#{bitSessionUser.student.stuName}"/> 
                             <br/>
                         </div>
                         <div class="col-md-6">
                             <label for="">Fecha de Nacimiento</label>
-                            <input type="date" class="form-control" placeholder="Fecha de prueba" value="20/08/2020"/> 
+                            <input type="date" class="form-control" placeholder="Fecha de prueba" 
+                                   value="#{bitSessionUser.student.stuBornDate}"/> 
                             <br/>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
                             <label for="">Teléfono</label>
-                            <input type="tel" class="form-control" placeholder="Teléfono" value=""/> 
+                            <input type="tel" class="form-control" placeholder="Teléfono" 
+                                   value="#{bitSessionUser.student.stuPhone}"/> 
                             <br/>
                         </div>
                         <div class="col-md-6">
@@ -40,29 +43,29 @@
                     <div class="row">
                         <div class="col-md-6">
                             <label for="">Nivel Académico</label>
-                            <input type="text" class="form-control" placeholder="Nivel académico" value=""/> 
+                            <input type="text" class="form-control" placeholder="Nivel académico" value="#{bitSessionUser.student.schId.schLevelName}"/> 
                             <br/>
                         </div>
                         <div class="col-md-6">
                             <label for="">Correo</label>
-                            <input type="email" class="form-control" placeholder="Correo" Value="correodeprueba@correo.com"/> 
+                            <input type="email" class="form-control" placeholder="Correo" Value="#{bitSessionUser.session.usrEmail}"/> 
                             <br/>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
                             <label for="">DUI</label>
-                            <input type="text" class="form-control" placeholder="DUI" value=""/> 
+                            <input type="text" class="form-control" placeholder="DUI" value="#{bitSessionUser.student.stuDui}"/> 
                             <br/>
                         </div>
                         <div class="col-md-6">
                             <label for="">Curriculum Vitae</label>
-                            <!--                        <div class="form-control btn btn-primary" style="height: 40px;">
-                                                        <input type="file" class="file-input-flat btn btn-primary" id="cv" style="display: none;"
-                                                               onchange="$('#cv-lbl').text($('#cv')[0].files[0].name)"/>
-                                                        <label for="cv" id="cv-lbl">Subir Curriculum Vitae</label>                            
-                                                    </div>-->
-                            <p:fileUpload value="#{fileUploadView.files}" mode="simple" skinSimple="true" multiple="true" />
+                            <div class="form-control btn btn-primary" style="height: 40px;">
+                                <input type="file" class="file-input-flat btn btn-primary" id="cv" style="display: none;"
+                                       onchange="$('#cv-lbl').text($('#cv')[0].files[0].name)" value="#{bitStudentController.file}"/>
+                                <label for="cv" id="cv-lbl">Subir Curriculum Vitae</label>                            
+                            </div>
+                            <!--<p:fileUpload value="#{bitStudentController.file}" mode="simple" skinSimple="true" multiple="true" />-->
                             <br/>
                             <br/>
                         </div>

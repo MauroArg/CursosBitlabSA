@@ -205,8 +205,8 @@ public class BitStudentController implements Serializable {
         }
     }
     
-    @PostConstruct
-    public void init(){
-        selected = new BitStudent();
-    }
+//    @PostConstruct
+//    public void init(){
+//        selected = new BitStudent();
+//    }
 }
