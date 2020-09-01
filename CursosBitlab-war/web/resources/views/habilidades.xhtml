@@ -20,11 +20,11 @@
                 <div class="row" id="requests">
                     
                     <h:form>
-                    <ui:repeat value="#{bitRequestController.getRequestByStudent(bitSessionUser.student.stuId)}" var="item">
+                        <ui:repeat value="#{bitDetailController.getDetailsByStudent(bitSessionUser.student.stuId)}" var="item">
                         <div class="row request">
                             <div class="col-md-3 text-center request-data">
                                 <div>
-                                    <h4>#{item.couId.couName}</h4>
+                                    <h4>#{item}</h4>
                                     <p>#{bitCourseController.objSDF.format(item.ADateCreate)}</p>
                                 </div>
                             </div>
