@@ -172,5 +172,9 @@ public class BitDetailController implements Serializable {
         }
 
     }
+    
+    public List<BitDetail> getDetailsByStudent(int id){
+    return ejbFacade.detailsByStudent(id);
+    }
 
 }

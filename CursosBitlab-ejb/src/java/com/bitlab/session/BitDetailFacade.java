@@ -32,7 +32,7 @@ public class BitDetailFacade extends AbstractFacade<BitDetail> {
         super(BitDetail.class);
     }
     
-    public List<BitDetail> detailsByStudent(BitStudent estudiante){
+    public List<BitDetail> detailsByStudent(int estudiante){
      try {
             System.out.println("Request");
             System.out.println(estudiante);
