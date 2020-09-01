@@ -24,7 +24,9 @@
                         <h:inputSecret class="input-flat" a:placeholder="Password" value="#{bitSessionUser.tempSession.usrPassword}"></h:inputSecret>
                         <!--input type="button" class="button-flat btn btn-primary" value="Iniciar"/-->
                         <h:commandButton class="button-flat btn btn-primary" value="Iniciar" actionListener="#{bitSessionUser.validateUser()}"></h:commandButton>
-                        <input type="button" class="button-register-flat btn btn-primary" value="Registrarse" id="register"/>
+                        <h:commandButton class="button-register-flat btn btn-primary" value="Registrarse" 
+                            id="register"></h:commandButton>
+                        <!--<input type="button" class="button-register-flat btn btn-primary" value="Registrarse" id="register" />-->
                     </h:form>
                 </div>
             </div>
@@ -37,13 +39,29 @@
                         <h4>Registro de usuario</h4>
                         <div class="first-part">
                             <input type="button" class="returnToLogin" id="toLogin" value="Ya tengo una cuenta"/>
-                            <input type="text" class="form-control input-flat" placeholder="Nombre Completo"/>
-                            <input type="text" class="form-control input-flat" placeholder="Fecha de Nacimiento"/>
-                            <input type="text" class="form-control input-flat" placeholder="Teléfono"/>
-                            <input type="text" class="form-control input-flat" placeholder="Inglés"/>
-                            <input type="text" class="form-control input-flat" placeholder="Nivel Académico"/>
-                            <input type="text" class="form-control input-flat" placeholder="Correo"/>
-                            <input type="text" class="form-control input-flat" placeholder="DUI"/>
+                            <input type="text" class="form-control input-flat" placeholder="Nombre Completo" value="#{bitStudentController.selected.stuName}"/>
+                            <input type="date" class="form-control input-flat" placeholder="Fecha de Nacimiento" value="#{bitStudentController.selected.stuBornDate}"/>
+                            <input type="text" class="form-control input-flat" placeholder="Teléfono" value="#{bitStudentController.selected.stuPhone}"/>
+                            <input type="text" class="form-control input-flat" placeholder="Inglés" value="#{bitStudentController.selected.engId.engLevelName}"/>
+
+<!--                            <p:outputLabel value="#{bundle.EditBitStudentLabel_schId}" for="schId" />
+                            <p:selectOneMenu id="schId" value="#{bitStudentController.selected.schId}" required="true" requiredMessage="#{bundle.EditBitStudentRequiredMessage_schId}">
+                                <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                                <f:selectItems value="#{bitScholarshipController.itemsAvailableSelectOne}"
+                                               var="schIdItem"
+                                               itemValue="#{schIdItem}"/>
+                            </p:selectOneMenu>-->
+<!--                            <p:outputLabel value="#{bundle.EditBitStudentLabel_engId}" for="engId" />
+                            <p:selectOneMenu id="engId" value="#{bitStudentController.selected.engId}" required="true" requiredMessage="#{bundle.EditBitStudentRequiredMessage_engId}">
+                                <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                                <f:selectItems value="#{bitEnglishController.itemsAvailableSelectOne}"
+                                               var="engIdItem"
+                                               itemValue="#{engIdItem}"/>
+                            </p:selectOneMenu>-->
+
+                            <input type="text" class="form-control input-flat" placeholder="Nivel Académico" value="#{bitStudentController.selected.schId.schLevelName}"/>
+                            <input type="text" class="form-control input-flat" placeholder="Correo" value="#{bitStudentController.selected.usrId.usrEmail}"/>
+                            <input type="text" class="form-control input-flat" placeholder="DUI" value="#{bitStudentController.selected.stuDui}"/>
                             <input type="button" class="button-flat toSecondPart" value="Continuar"/>
                         </div>
                         <div class="second-part">
@@ -58,8 +76,8 @@
                             </div>
                             <hr/>
                             <label style="color:gray;">Digite sus datos de usuario</label>
-                            <input type="text" class="form-control input-flat" placeholder="Usuario"/>
-                            <input type="password" class="form-control input-flat" placeholder="Contraseña"/>
+                            <input type="text" class="form-control input-flat" placeholder="Usuario" value="#{bitUserController.selected.usrUsername}"/>
+                            <input type="password" class="form-control input-flat" placeholder="Contraseña" value="#{bitUserController.selected.usrPassword}"/>
                             <input type="password" class="form-control input-flat" placeholder="Confirmar contraseña"/>
                             <input type="button" class="button-flat" value="Registrar"/>
                         </div>

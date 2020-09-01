@@ -54,7 +54,11 @@ public class BitUserController implements Serializable {
     private BitUserFacade getFacade() {
         return ejbFacade;
     }
-
+    
+    public BitUser getLastUser()
+    {
+        return getFacade().getLastUser();
+    }
     
 
     public BitUser prepareCreate() {

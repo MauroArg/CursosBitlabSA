@@ -35,6 +35,21 @@ public class BitUserFacade extends AbstractFacade<BitUser> {
             return null;
         }
     }
+    
+    public BitUser getLastUser()
+    {
+        try
+        {
+            Query q = em.createQuery("SELECT b FROM BitUser b order by b.usrId desc");
+            BitUser last = (BitUser) q.setMaxResults(1).getResultList();
+            return last;
+        }
+        catch(Exception e)
+        {
+            System.out.println("Error en getLastUser " + e);
+            return null;
+        }
+    }
 
     @Override
     protected EntityManager getEntityManager() {
