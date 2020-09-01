@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="BitCourseViewDlg" widgetVar="BitCourseViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewBitCourseTitle}">
+            <h:form id="BitCourseViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{bitCourseController.selected != null}">
+                        <h:outputText value="#{bundle.ViewBitCourseLabel_couId}"/>
+                        <h:outputText value="#{bitCourseController.selected.couId}" title="#{bundle.ViewBitCourseTitle_couId}"/>
+                        <h:outputText value="#{bundle.ViewBitCourseLabel_couName}"/>
+                        <h:outputText value="#{bitCourseController.selected.couName}" title="#{bundle.ViewBitCourseTitle_couName}"/>
+                        <h:outputText value="#{bundle.ViewBitCourseLabel_couImg}"/>
+                        <h:outputText value="#{bitCourseController.selected.couImg}" title="#{bundle.ViewBitCourseTitle_couImg}"/>
+                        <h:outputText value="#{bundle.ViewBitCourseLabel_couDescription}"/>
+                        <h:outputText value="#{bitCourseController.selected.couDescription}" title="#{bundle.ViewBitCourseTitle_couDescription}"/>
+                        <h:outputText value="#{bundle.ViewBitCourseLabel_couStartDate}"/>
+                        <h:outputText value="#{bitCourseController.selected.couStartDate}" title="#{bundle.ViewBitCourseTitle_couStartDate}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewBitCourseLabel_couEndDate}"/>
+                        <h:outputText value="#{bitCourseController.selected.couEndDate}" title="#{bundle.ViewBitCourseTitle_couEndDate}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewBitCourseLabel_ADateCreate}"/>
+                        <h:outputText value="#{bitCourseController.selected.ADateCreate}" title="#{bundle.ViewBitCourseTitle_ADateCreate}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewBitCourseLabel_AUserCreate}"/>
+                        <h:outputText value="#{bitCourseController.selected.AUserCreate}" title="#{bundle.ViewBitCourseTitle_AUserCreate}"/>
+                        <h:outputText value="#{bundle.ViewBitCourseLabel_ADateChange}"/>
+                        <h:outputText value="#{bitCourseController.selected.ADateChange}" title="#{bundle.ViewBitCourseTitle_ADateChange}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewBitCourseLabel_AUserChange}"/>
+                        <h:outputText value="#{bitCourseController.selected.AUserChange}" title="#{bundle.ViewBitCourseTitle_AUserChange}"/>
+                        <h:outputText value="#{bundle.ViewBitCourseLabel_usrId}"/>
+                        <h:outputText value="#{bitCourseController.selected.usrId}" title="#{bundle.ViewBitCourseTitle_usrId}"/>
+                        <h:outputText value="#{bundle.ViewBitCourseLabel_cosId}"/>
+                        <h:outputText value="#{bitCourseController.selected.cosId}" title="#{bundle.ViewBitCourseTitle_cosId}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="BitCourseViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

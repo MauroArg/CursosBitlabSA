@@ -36,7 +36,6 @@ public class BitStudentController implements Serializable {
     private Calendar date = Calendar.getInstance();
     private UploadedFile file;
     private String destination;
-    private BitSessionUser seU = new BitSessionUser();
     
     private UploadFile uf = new UploadFile();
     public BitStudentController() {
@@ -199,15 +198,15 @@ public class BitStudentController implements Serializable {
     }
     
     public void newDocument(){
-        if(uf.upload(this.getFile(), seU.getStudent().getStuId())){
+        if(uf.upload(this.getFile(), selected.getStuId())){
             selected.setStuImg(uf.SEPARATOR + destination);
-            update();
+            create();
             destination = "";
         }
     }
     
-    @PostConstruct
-    public void init(){
-        selected = new BitStudent();
-    }
+//    @PostConstruct
+//    public void init(){
+//        selected = new BitStudent();
+//    }
 }
