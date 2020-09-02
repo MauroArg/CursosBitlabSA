@@ -7,6 +7,23 @@
     xmlns:p="http://primefaces.org/ui"
     xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
 
+    <style>
+        .selectReg{
+            background-color: rgb(233, 233, 233);
+            border: none;
+            height: 50px;
+            width: 24vw;
+            max-width: 350px;
+            min-width: 250px;
+            font-family: Poppins-Medium, sans-serif;
+            font-size: 14px;
+            font-weight: 200;
+
+            border-radius: 25px; 
+
+            margin: 10px
+        }
+    </style>
     <div class="log-in">
         <button class="hideLogin" style="width: 50px;padding:10px;"><em class="fas fa-times"></em></button>
         <div class="login-card">
@@ -24,9 +41,8 @@
                         <h:inputSecret class="input-flat" a:placeholder="Password" value="#{bitSessionUser.tempSession.usrPassword}"></h:inputSecret>
                         <!--input type="button" class="button-flat btn btn-primary" value="Iniciar"/-->
                         <h:commandButton class="button-flat btn btn-primary" value="Iniciar" actionListener="#{bitSessionUser.validateUser()}"></h:commandButton>
-                        <h:commandButton class="button-register-flat btn btn-primary" value="Registrarse" 
-                            id="register"></h:commandButton>
-                        <!--<input type="button" class="button-register-flat btn btn-primary" value="Registrarse" id="register" />-->
+                        <!--<h:commandButton class="button-register-flat btn btn-primary" value="Registrarse" id="register"></h:commandButton>-->
+                        <input type="button" class="button-register-flat btn btn-primary" value="Registrarse" id="register" />
                     </h:form>
                 </div>
             </div>
@@ -42,24 +58,25 @@
                             <input type="text" class="form-control input-flat" placeholder="Nombre Completo" value="#{bitStudentController.selected.stuName}"/>
                             <input type="date" class="form-control input-flat" placeholder="Fecha de Nacimiento" value="#{bitStudentController.selected.stuBornDate}"/>
                             <input type="text" class="form-control input-flat" placeholder="Teléfono" value="#{bitStudentController.selected.stuPhone}"/>
-                            <input type="text" class="form-control input-flat" placeholder="Inglés" value="#{bitStudentController.selected.engId.engLevelName}"/>
-
-<!--                            <p:outputLabel value="#{bundle.EditBitStudentLabel_schId}" for="schId" />
-                            <p:selectOneMenu id="schId" value="#{bitStudentController.selected.schId}" required="true" requiredMessage="#{bundle.EditBitStudentRequiredMessage_schId}">
-                                <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
-                                <f:selectItems value="#{bitScholarshipController.itemsAvailableSelectOne}"
-                                               var="schIdItem"
-                                               itemValue="#{schIdItem}"/>
-                            </p:selectOneMenu>-->
-<!--                            <p:outputLabel value="#{bundle.EditBitStudentLabel_engId}" for="engId" />
-                            <p:selectOneMenu id="engId" value="#{bitStudentController.selected.engId}" required="true" requiredMessage="#{bundle.EditBitStudentRequiredMessage_engId}">
-                                <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <!--<input type="text" class="form-control input-flat" placeholder="Inglés" value="#{bitStudentController.selected.engId.engLevelName}"/>-->
+                            
+                            <h:selectOneMenu id="engId" value="#{bitStudentController.selected.engId}" 
+                                             required="true" style="width: 100%;" styleClass="form-control selectReg">
+                                <f:selectItem itemLabel="Nivel de inglés" itemValue="" />
                                 <f:selectItems value="#{bitEnglishController.itemsAvailableSelectOne}"
-                                               var="engIdItem"
-                                               itemValue="#{engIdItem}"/>
-                            </p:selectOneMenu>-->
+                                               var="engIdItem" itemValue="#{engIdItem}"
+                                               itemLabel="#{engIdItem.engLevelName}"/>
+                            </h:selectOneMenu>
+                           
+                            <h:selectOneMenu id="schId" value="#{bitStudentController.selected.schId}" 
+                                             required="true" style="width: 100%;" styleClass="form-control selectReg">
+                                <f:selectItem itemLabel="Nivel académico" itemValue="" />
+                                <f:selectItems value="#{bitScholarshipController.itemsAvailableSelectOne}"
+                                               var="schIdItem" itemValue="#{schIdItem}"
+                                               itemLabel="#{schIdItem.schLevelName}"/>
+                            </h:selectOneMenu>
 
-                            <input type="text" class="form-control input-flat" placeholder="Nivel Académico" value="#{bitStudentController.selected.schId.schLevelName}"/>
+                            <!--<input type="text" class="form-control input-flat" placeholder="Nivel Académico" value="#{bitStudentController.selected.schId.schLevelName}"/>-->
                             <input type="text" class="form-control input-flat" placeholder="Correo" value="#{bitStudentController.selected.usrId.usrEmail}"/>
                             <input type="text" class="form-control input-flat" placeholder="DUI" value="#{bitStudentController.selected.stuDui}"/>
                             <input type="button" class="button-flat toSecondPart" value="Continuar"/>
