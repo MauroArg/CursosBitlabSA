@@ -6,6 +6,7 @@
 package com.bitlab.session;
 
 import com.bitlab.entities.BitDetail;
+import com.bitlab.entities.BitSkill;
 import com.bitlab.entities.BitStudent;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -30,6 +31,14 @@ public class BitDetailFacade extends AbstractFacade<BitDetail> {
 
     public BitDetailFacade() {
         super(BitDetail.class);
+    }
+    
+    public List<BitSkill> getSkillsByStudent(int estudiante)
+    {
+        Query q = em.createQuery("SELECT b.skiId FROM BitDetail b WHERE b.stuId.stuId = :estudiante");
+        q.setParameter("estudiante", estudiante);
+        List<BitSkill> req = (List<BitSkill>) q.getResultList();
+        return req;
     }
     
     public List<BitDetail> detailsByStudent(int estudiante){

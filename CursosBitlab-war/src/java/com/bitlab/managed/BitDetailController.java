@@ -1,6 +1,7 @@
 package com.bitlab.managed;
 
 import com.bitlab.entities.BitDetail;
+import com.bitlab.entities.BitSkill;
 import com.bitlab.managed.util.JsfUtil;
 import com.bitlab.managed.util.JsfUtil.PersistAction;
 import com.bitlab.session.BitDetailFacade;
@@ -33,6 +34,7 @@ public class BitDetailController implements Serializable {
     private BitDetail selected;
     private Calendar date = Calendar.getInstance();
 
+    
     public BitDetailController() {
     }
 
@@ -60,6 +62,11 @@ public class BitDetailController implements Serializable {
         return selected;
     }
 
+    public List<BitSkill> getSkillsByStudent(int estudiante)
+    {
+        return getFacade().getSkillsByStudent(estudiante);
+    }
+    
     public void create() {
         selected.setDetId(0);
         selected.setADateCreate(date.getTime());
