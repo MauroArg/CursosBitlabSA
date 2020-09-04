@@ -33,7 +33,7 @@ public class UploadFile {
             if(!folder.exists()){
                 folder.mkdirs();
             }
-            
+            copyFile(archivo.getFileName(), archivo.getInputStream());
             return true;
         }catch(Exception e){
             e.printStackTrace();
