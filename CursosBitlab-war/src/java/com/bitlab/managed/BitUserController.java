@@ -33,6 +33,8 @@ public class BitUserController implements Serializable {
     private List<BitUser> items = null;
     private BitUser selected;
     private Calendar date = Calendar.getInstance();
+    private BitStudentController student = new BitStudentController();
+
 
     public BitUserController() {
     }
@@ -179,6 +181,17 @@ public class BitUserController implements Serializable {
             }
         }
 
+    }
+    
+    public void newStudentUser(){
+        try {
+            create();
+            student.create(getLastUser());
+        } catch (Exception e) {
+            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, null, e);
+            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
+        }
+        
     }
 
 }

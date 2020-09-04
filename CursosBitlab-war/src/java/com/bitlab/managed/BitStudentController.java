@@ -1,6 +1,7 @@
 package com.bitlab.managed;
 
 import com.bitlab.entities.BitStudent;
+import com.bitlab.entities.BitUser;
 import com.bitlab.managed.util.JsfUtil;
 import com.bitlab.managed.util.JsfUtil.PersistAction;
 import com.bitlab.session.BitStudentFacade;
@@ -86,6 +87,19 @@ public class BitStudentController implements Serializable {
 
     public void create() {
         selected.setStuId(0);
+        selected.setADateCreate(date.getTime());
+        selected.setADateChange(date.getTime());
+        selected.setAUserChange("System");
+        selected.setAUserCreate("System");
+        persist(PersistAction.CREATE, ResourceBundle.getBundle("/Bundle").getString("BitStudentCreated"));
+        if (!JsfUtil.isValidationFailed()) {
+            items = null;    // Invalidate list of items to trigger re-query.
+        }
+    }
+    
+    public void create(BitUser usrId) {
+        selected.setStuId(0);
+        selected.setUsrId(usrId);
         selected.setADateCreate(date.getTime());
         selected.setADateChange(date.getTime());
         selected.setAUserChange("System");

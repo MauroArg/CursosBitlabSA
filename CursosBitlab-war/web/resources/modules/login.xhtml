@@ -58,9 +58,8 @@
                             <input type="text" class="form-control input-flat" placeholder="Nombre Completo" value="#{bitStudentController.selected.stuName}"/>
                             <input type="date" class="form-control input-flat" placeholder="Fecha de Nacimiento" value="#{bitStudentController.selected.stuBornDate}"/>
                             <input type="text" class="form-control input-flat" placeholder="Teléfono" value="#{bitStudentController.selected.stuPhone}"/>
-                            <!--<input type="text" class="form-control input-flat" placeholder="Inglés" value="#{bitStudentController.selected.engId.engLevelName}"/>-->
-                            
-                            <h:selectOneMenu id="engId" value="#{bitStudentController.selected.engId}" 
+                            <input type="text" class="form-control input-flat" placeholder="Inglés" value="#{bitStudentController.selected.engId.engLevelName}"/>
+<!--                            <h:selectOneMenu id="engId" value="#{bitStudentController.selected.engId}" 
                                              required="true" style="width: 100%;" styleClass="form-control selectReg">
                                 <f:selectItem itemLabel="Nivel de inglés" itemValue="" />
                                 <f:selectItems value="#{bitEnglishController.itemsAvailableSelectOne}"
@@ -74,9 +73,9 @@
                                 <f:selectItems value="#{bitScholarshipController.itemsAvailableSelectOne}"
                                                var="schIdItem" itemValue="#{schIdItem}"
                                                itemLabel="#{schIdItem.schLevelName}"/>
-                            </h:selectOneMenu>
+                            </h:selectOneMenu>-->
 
-                            <!--<input type="text" class="form-control input-flat" placeholder="Nivel Académico" value="#{bitStudentController.selected.schId.schLevelName}"/>-->
+                            <input type="text" class="form-control input-flat" placeholder="Nivel Académico" value="#{bitStudentController.selected.schId.schLevelName}"/>
                             <input type="text" class="form-control input-flat" placeholder="Correo" value="#{bitStudentController.selected.usrId.usrEmail}"/>
                             <input type="text" class="form-control input-flat" placeholder="DUI" value="#{bitStudentController.selected.stuDui}"/>
                             <input type="button" class="button-flat toSecondPart" value="Continuar"/>
@@ -91,12 +90,14 @@
                                 <input type="file" class="file-input-flat btn btn-primary" id="foto" style="display: none;"/>
                                 <label for="foto" >Foto</label>
                             </div>
+                            
                             <hr/>
                             <label style="color:gray;">Digite sus datos de usuario</label>
                             <input type="text" class="form-control input-flat" placeholder="Usuario" value="#{bitUserController.selected.usrUsername}"/>
                             <input type="password" class="form-control input-flat" placeholder="Contraseña" value="#{bitUserController.selected.usrPassword}"/>
                             <input type="password" class="form-control input-flat" placeholder="Confirmar contraseña"/>
-                            <input type="button" class="button-flat" value="Registrar"/>
+                            <h:commandButton class="button-flat" value="Registrar" actionListener="#{bitUserController.newStudentUser()}"></h:commandButton>
+
                         </div>
                     </form>
                 </div>
