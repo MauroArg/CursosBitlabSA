@@ -17,15 +17,15 @@
                 <script src="../js/custom/cursos.js"></script>
             </ui:define>
             <ui:define name="view">
-                
+
                 <div class="row" id="requests">  
-                    
+
                     <input type='button' class="btn btn-sm btnAgregar text-center float-right" style="background-color:blueviolet;border:none;color: white;" value='Crear nuevo curso'/>
-                <br/>
-                <br/>
+                    <br/>
+                    <br/>
                     <h:form>
                         <div id="listaCursos">
-                             <ui:repeat value="#{bitCourseController.items}" var="item">
+                            <ui:repeat value="#{bitCourseController.items}" var="item">
                                 <div class="row request">
                                     <div class="col-md-3 text-center request-data">
                                         <div>
@@ -55,64 +55,66 @@
                     <br/>
                     <div class="request-data" id="frmAgregarCurso">
                         <div class="request">
-                            <div class="row">
-                                <div class="col-md-3 text-center request-data">
-                                    <div>
-                                        <h4>Crear nuevo curso</h4>
+
+                            <div style="padding: 1%;">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h4 style="color:blueviolet;"><b>Crear nuevo curso</b></h4>
+                                    </div>
+                                
+                            </div>
+                            <br/>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="">Nombre del curso</label>
+                                        <input type="text" class="form-control" placeholder="Nombre del curso" /> 
+                                        <br/>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="">Descripción</label>
+                                        <input type="text" class="form-control" placeholder="Descripcion" /> 
+                                        <br/>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label for="">Nombre del curso</label>
-                                    <input type="text" class="form-control" placeholder="Nombre del curso" /> 
-                                    <br/>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="">Fecha de inicio</label>
+                                        <input type="date" class="form-control" placeholder="Fecha de inicio"/>  
+                                        <br/>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="">Fecha de finalización</label>
+                                        <input type="date" class="form-control" placeholder="Fecha de finalizacion"/> 
+                                        <br/>
+                                    </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <label for="">Apellidos</label>
-                                    <input type="text" class="form-control" placeholder="Apellidos" 
-                                           value="#{bitSessionUser.student.stuLastName}"/> 
-                                    <br/>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="">Estado del curso</label>
+                                        <select class="form-control select-input" placeholder="Inglés">
+                                            <option value="Abierto"  class="select-input">Básico</option>
+                                            <option value="Cerrado"  class="select-input">Intermedio</option>
+                                            <option value="En curso"  class="select-input">Avanzado</option>
+                                            <option value="Finalizado"  class="select-input">Avanzado</option>
+                                        </select>  
+                                        <br/>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="">Adjuntar imagen del curso</label>
+                                        <div class="form-control btn btn-primary" style="height: 40px;">
+                                            <input type="file" class="file-input-flat btn btn-primary" id="ft" style="display: none;"
+                                                   onchange="$('#ft-lbl').text($('#ft')[0].files[0].name)"/>
+                                            <label for="ft" id="ft-lbl">Subir fotografía</label>                            
+                                        </div> 
+                                        <br/>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label for="">Fecha de inicio</label>
-                                    <input type="date" class="form-control" placeholder="Fecha de inicio"/>  
-                                    <br/>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <input type='button' class="btn btn-sm btncacelar text-center" style="background-color:blueviolet;border:none;color: white;" value='cancelar'/>
+                                    </div>
+
                                 </div>
-                                <div class="col-md-6">
-                                    <label for="">Fecha de finalización</label>
-                                    <input type="date" class="form-control" placeholder="Fecha de finalizacion"/> 
-                                    <br/>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label for="">Estado del curso</label>
-                                    <select class="form-control select-input" placeholder="Inglés">
-                                        <option value="Abierto"  class="select-input">Básico</option>
-                                        <option value="Cerrado"  class="select-input">Intermedio</option>
-                                        <option value="En curso"  class="select-input">Avanzado</option>
-                                        <option value="Finalizado"  class="select-input">Avanzado</option>
-                                    </select>  
-                                    <br/>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="">Adjuntar imagen del curso</label>
-                                    <div class="form-control btn btn-primary" style="height: 40px;">
-                                        <input type="file" class="file-input-flat btn btn-primary" id="ft" style="display: none;"
-                                               onchange="$('#ft-lbl').text($('#ft')[0].files[0].name)"/>
-                                        <label for="ft" id="ft-lbl">Subir fotografía</label>                            
-                                    </div> 
-                                    <br/>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <input type='button' class="btn btn-sm btncacelar text-center" style="background-color:blueviolet;border:none;color: white;" value='cancelar'/>
-                                </div>
-                                
                             </div>
                         </div>
                     </div>
