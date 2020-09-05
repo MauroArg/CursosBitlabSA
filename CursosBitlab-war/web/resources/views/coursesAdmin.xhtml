@@ -1,0 +1,121 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../template/template.xhtml">
+
+            <ui:define name="title">
+                App | cursos
+            </ui:define>
+            <ui:define name="custom-import">
+                <script src="../js/custom/cursos.js"></script>
+            </ui:define>
+            <ui:define name="view">
+
+                <div class="row" id="requests">
+                    <input type='button' class="btnAgregar text-center" style="background-color:blueviolet;border:none;" value='Crear nuevo curso'/>
+
+                    <h:form>
+                        <ui:repeat value="#{bitCourseController.items}" var="item">
+                            <div class="row request">
+                                <div class="col-md-3 text-center request-data">
+                                    <div>
+                                        <h4>#{item.couName}</h4>
+                                        <p>#{bitCourseController.objSDF.format(item.couStartDate)}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 request-description">
+                                    <p>#{item.couDescription}</p>
+                                </div>
+                                <div class="col-md-3 request-state">
+                                    <input type='button' class="apply text-center" style="background-color:blueviolet;border:none;" onclick="$('.#{item.couName}').click();" value='Aplicar'/>
+
+                                    <p:commandButton value="#{item.couName}" styleClass="prepareToApply #{item.couName}" style="display:none;" onclick="alert('#{item.couName} button pressed');">
+                                        <f:setPropertyActionListener target="#{bitRequestController.course}" value="#{item}"/>
+                                        <f:setPropertyActionListener target="#{bitRequestController.course}" value="#{bitSessionUser.student}"/>
+                                    </p:commandButton>
+
+
+                                </div>
+                            </div>
+                        </ui:repeat>    
+                    </h:form>
+                </div>
+                <h:form>
+                    <div class="request-data" id="frmAgregarCurso">
+                        <div class="request">
+                            <div class="row">
+                                <div class="col-md-3 text-center request-data">
+                                    <div>
+                                        <h4>Crear nuevo curso</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="">Nombre del curso</label>
+                                    <input type="text" class="form-control" placeholder="Nombre del curso" /> 
+                                    <br/>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="">Apellidos</label>
+                                    <input type="text" class="form-control" placeholder="Apellidos" 
+                                           value="#{bitSessionUser.student.stuLastName}"/> 
+                                    <br/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="">Fecha de inicio</label>
+                                    <input type="date" class="form-control" placeholder="Fecha de inicio"/>  
+                                    <br/>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="">Fecha de finalización</label>
+                                    <input type="date" class="form-control" placeholder="Fecha de finalizacion"/> 
+                                    <br/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="">Estado del curso</label>
+                                    <select class="form-control select-input" placeholder="Inglés">
+                                        <option value="Abierto"  class="select-input">Básico</option>
+                                        <option value="Cerrado"  class="select-input">Intermedio</option>
+                                        <option value="En curso"  class="select-input">Avanzado</option>
+                                        <option value="Finalizado"  class="select-input">Avanzado</option>
+                                    </select>  
+                                    <br/>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="">Adjuntar imagen del curso</label>
+                                    <div class="form-control btn btn-primary" style="height: 40px;">
+                                        <input type="file" class="file-input-flat btn btn-primary" id="ft" style="display: none;"
+                                               onchange="$('#ft-lbl').text($('#ft')[0].files[0].name)"/>
+                                        <label for="ft" id="ft-lbl">Subir fotografía</label>                            
+                                    </div> 
+                                    <br/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type='button' class="btncacelar text-center" style="background-color:blueviolet;border:none;" value='cancelar'/>
+                                </div>
+                                <div class="col-md-6">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+
+    </body>
+</html>
