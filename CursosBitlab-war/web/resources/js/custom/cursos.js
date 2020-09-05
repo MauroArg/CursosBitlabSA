@@ -6,12 +6,15 @@
 
 $(document).ready(function () {
     $('#frmAgregarCurso').hide();
-    
+
     $(document).on('click', '.btnAgregar', function () {
+        $('#listaCursos').hide();
         $('#frmAgregarCurso').slideDown();
+
     });
     $(document).on('click', '.btncacelar', function () {
-        $('#frmAgregarCurso').slideUp();
+        $('#frmAgregarCurso').hide();
+        $('#listaCursos').slideDown();
     });
 
 

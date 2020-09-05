@@ -17,37 +17,42 @@
                 <script src="../js/custom/cursos.js"></script>
             </ui:define>
             <ui:define name="view">
-
-                <div class="row" id="requests">
-                    <input type='button' class="btnAgregar text-center" style="background-color:blueviolet;border:none;" value='Crear nuevo curso'/>
-
+                
+                <div class="row" id="requests">  
+                    
+                    <input type='button' class="btn btn-sm btnAgregar text-center float-right" style="background-color:blueviolet;border:none;color: white;" value='Crear nuevo curso'/>
+                <br/>
+                <br/>
                     <h:form>
-                        <ui:repeat value="#{bitCourseController.items}" var="item">
-                            <div class="row request">
-                                <div class="col-md-3 text-center request-data">
-                                    <div>
-                                        <h4>#{item.couName}</h4>
-                                        <p>#{bitCourseController.objSDF.format(item.couStartDate)}</p>
+                        <div id="listaCursos">
+                             <ui:repeat value="#{bitCourseController.items}" var="item">
+                                <div class="row request">
+                                    <div class="col-md-3 text-center request-data">
+                                        <div>
+                                            <h4>#{item.couName}</h4>
+                                            <p>#{bitCourseController.objSDF.format(item.couStartDate)}</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 request-description">
+                                        <p>#{item.couDescription}</p>
+                                    </div>
+                                    <div class="col-md-3 request-state">
+                                        <input type='button' class="apply text-center" style="background-color:blueviolet;border:none;" onclick="$('.#{item.couName}').click();" value='Aplicar'/>
+
+                                        <p:commandButton value="#{item.couName}" styleClass="prepareToApply #{item.couName}" style="display:none;" onclick="alert('#{item.couName} button pressed');">
+                                            <f:setPropertyActionListener target="#{bitRequestController.course}" value="#{item}"/>
+                                            <f:setPropertyActionListener target="#{bitRequestController.course}" value="#{bitSessionUser.student}"/>
+                                        </p:commandButton>
+
+
                                     </div>
                                 </div>
-                                <div class="col-md-6 request-description">
-                                    <p>#{item.couDescription}</p>
-                                </div>
-                                <div class="col-md-3 request-state">
-                                    <input type='button' class="apply text-center" style="background-color:blueviolet;border:none;" onclick="$('.#{item.couName}').click();" value='Aplicar'/>
-
-                                    <p:commandButton value="#{item.couName}" styleClass="prepareToApply #{item.couName}" style="display:none;" onclick="alert('#{item.couName} button pressed');">
-                                        <f:setPropertyActionListener target="#{bitRequestController.course}" value="#{item}"/>
-                                        <f:setPropertyActionListener target="#{bitRequestController.course}" value="#{bitSessionUser.student}"/>
-                                    </p:commandButton>
-
-
-                                </div>
-                            </div>
-                        </ui:repeat>    
+                            </ui:repeat>   
+                        </div>
                     </h:form>
                 </div>
                 <h:form>
+                    <br/>
                     <div class="request-data" id="frmAgregarCurso">
                         <div class="request">
                             <div class="row">
@@ -105,11 +110,9 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <input type='button' class="btncacelar text-center" style="background-color:blueviolet;border:none;" value='cancelar'/>
+                                    <input type='button' class="btn btn-sm btncacelar text-center" style="background-color:blueviolet;border:none;color: white;" value='cancelar'/>
                                 </div>
-                                <div class="col-md-6">
-
-                                </div>
+                                
                             </div>
                         </div>
                     </div>
