@@ -171,5 +171,17 @@ public class BitEnvironmentController implements Serializable {
         }
 
     }
+    public List<BitEnvironment> environmentLs(){
+        try {
+            items = ejbFacade.getEnvironmentFromStudent(0);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        items.forEach((e) -> {
+            System.out.println("++++++++++++++++++++++++++++++++++"+e);
+        });
+        return items;
+    }
 
 }

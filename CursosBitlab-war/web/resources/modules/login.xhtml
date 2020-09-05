@@ -60,21 +60,7 @@
                             <input type="text" class="form-control input-flat" placeholder="Teléfono" value="#{bitStudentController.selected.stuPhone}"/>
                             <!--<input type="text" class="form-control input-flat" placeholder="Inglés" value="#{bitStudentController.selected.engId.engLevelName}"/>-->
                             
-                            <h:selectOneMenu id="engId" value="#{bitStudentController.selected.engId}" 
-                                             required="true" style="width: 100%;" styleClass="form-control selectReg">
-                                <f:selectItem itemLabel="Nivel de inglés" itemValue="" />
-                                <f:selectItems value="#{bitEnglishController.itemsAvailableSelectOne}"
-                                               var="engIdItem" itemValue="#{engIdItem}"
-                                               itemLabel="#{engIdItem.engLevelName}"/>
-                            </h:selectOneMenu>
-                           
-                            <h:selectOneMenu id="schId" value="#{bitStudentController.selected.schId}" 
-                                             required="true" style="width: 100%;" styleClass="form-control selectReg">
-                                <f:selectItem itemLabel="Nivel académico" itemValue="" />
-                                <f:selectItems value="#{bitScholarshipController.itemsAvailableSelectOne}"
-                                               var="schIdItem" itemValue="#{schIdItem}"
-                                               itemLabel="#{schIdItem.schLevelName}"/>
-                            </h:selectOneMenu>
+                            
 
                             <!--<input type="text" class="form-control input-flat" placeholder="Nivel Académico" value="#{bitStudentController.selected.schId.schLevelName}"/>-->
                             <input type="text" class="form-control input-flat" placeholder="Correo" value="#{bitStudentController.selected.usrId.usrEmail}"/>

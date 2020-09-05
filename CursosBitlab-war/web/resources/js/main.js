@@ -83,6 +83,7 @@ let initFunction=()=>{
     $('#courses').slideUp(0);
     $('#requests').slideUp(0);
     $('#profile').slideUp(0);
+    $('#habilidades').slideUp(0);
 }
 
 let showProfile=()=>{
@@ -103,6 +104,13 @@ let showRequests=()=>{
     $('#courses').slideUp(0);
     $('#requests').slideDown(300);
     $('#profile').slideUp(0);
+    toggleMenu();
+}
+let showHabilidades=()=>{
+    $('#courses').slideUp(0);
+    $('#requests').slideUp(0);
+    $('#profile').slideUp(0);
+    $('#habilidades').slideDown(300);
     toggleMenu();
 }
 
